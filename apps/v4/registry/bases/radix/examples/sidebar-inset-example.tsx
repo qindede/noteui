@@ -145,45 +145,64 @@ export default function SidebarInsetExample() {
         className="sticky top-0 hidden h-svh w-120 lg:flex flex-col"
       >
         {/* 第一行：应用窗口操作 */}
-        <div className="flex items-center justify-end gap-2 px-4 py-2 border-b">
-          <IconPlaceholder
-            lucide="MinusIcon"
-            tabler="IconMinus"
-            hugeicons="MinusSignIcon"
-            phosphor="MinusIcon"
-            remixicon="RiSubtractLine"
-            className="size-4 cursor-pointer hover:text-muted-foreground"
-          />
-          <IconPlaceholder
-            lucide="SquareIcon"
-            tabler="IconSquare"
-            hugeicons="SquareIcon"
-            phosphor="SquareIcon"
-            remixicon="RiSquareLine"
-            className="size-4 cursor-pointer hover:text-muted-foreground"
-          />
-          <IconPlaceholder
-            lucide="XIcon"
-            tabler="IconX"
-            hugeicons="Cancel01Icon"
-            phosphor="XIcon"
-            remixicon="RiCloseLine"
-            className="size-4 cursor-pointer hover:text-destructive"
-          />
+        <div className="flex items-center justify-end gap-2 px-4">
+          <div className="flex items-center gap-2 px-2 text-xs text-muted-foreground">
+            最后保存：刚刚
+            <IconPlaceholder
+              lucide="CloudUploadIcon"
+              tabler="IconSettings"
+              hugeicons="Settings01Icon"
+              phosphor="SettingsIcon"
+              remixicon="RiSettingsLine"
+              className="size-4"
+            />
+          </div>
+          <div className="h-8 w-8 flex items-center justify-center rounded-md hover:bg-muted cursor-pointer">
+            <IconPlaceholder
+              lucide="SettingsIcon"
+              tabler="IconSettings"
+              hugeicons="Settings01Icon"
+              phosphor="SettingsIcon"
+              remixicon="RiSettingsLine"
+              className="size-4"
+            />
+          </div>
+          <div className="h-10 w-10 flex items-center justify-center hover:bg-muted cursor-pointer">
+            <IconPlaceholder
+              lucide="MinusIcon"
+              tabler="IconMinus"
+              hugeicons="MinusSignIcon"
+              phosphor="MinusIcon"
+              remixicon="RiSubtractLine"
+              className="size-4"
+            />
+          </div>
+          <div className="h-10 w-10 flex items-center justify-center hover:bg-muted cursor-pointer">
+            <IconPlaceholder
+              lucide="SquareIcon"
+              tabler="IconSquare"
+              hugeicons="SquareIcon"
+              phosphor="SquareIcon"
+              remixicon="RiSquareLine"
+              className="size-4"
+            />
+          </div>
+          <div className="h-10 w-10 flex items-center justify-center hover:bg-destructive hover:text-accent cursor-pointer">
+            <IconPlaceholder
+              lucide="XIcon"
+              tabler="IconX"
+              hugeicons="Cancel01Icon"
+              phosphor="XIcon"
+              remixicon="RiCloseLine"
+              className="size-4"
+            />
+          </div>
         </div>
 
         {/* 第二行：聊天区域 */}
         <div className="flex flex-col flex-1 min-h-0">
           {/* 窗口操作图标 */}
-          <div className="flex items-center justify-end gap-2 px-4 py-2 border-b">
-            <IconPlaceholder
-              lucide="SearchIcon"
-              tabler="IconSearch"
-              hugeicons="Search01Icon"
-              phosphor="MagnifyingGlassIcon"
-              remixicon="RiSearchLine"
-              className="size-4 cursor-pointer hover:text-muted-foreground"
-            />
+          <div className="flex items-center gap-2 py-2">
             <IconPlaceholder
               lucide="HistoryIcon"
               tabler="IconHistory"
