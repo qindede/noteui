@@ -140,6 +140,12 @@ export default function SidebarInsetExample() {
           <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
         </div>
       </SidebarInset>
+      <Sidebar
+        collapsible="none"
+        className="sticky top-0 hidden h-svh w-120 lg:flex"
+      >
+        {/* 右栏内容 */}
+      </Sidebar>
     </SidebarProvider>
   )
 }
