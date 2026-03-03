@@ -214,11 +214,11 @@ export default function SidebarInsetExample() {
           </div>
           <div className="h-8 w-8 flex items-center justify-center rounded-md hover:bg-muted cursor-pointer">
             <IconPlaceholder
-              lucide="PlusIcon"
-              tabler="IconPlus"
-              hugeicons="PlusSignIcon"
-              phosphor="PlusIcon"
-              remixicon="RiAddLine"
+              lucide="MessageSquarePlusIcon"
+              tabler="IconMessage2Plus"
+              hugeicons="MessageAdd01Icon"
+              phosphor="ChatCircleDotsIcon"
+              remixicon="RiChatNewLine"
               className="size-4"
             />
           </div>
