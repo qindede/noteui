@@ -240,79 +240,19 @@ export default function SidebarInsetExample() {
     <SidebarProvider>
       <Sidebar variant="inset">
         <SidebarHeader>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <SidebarMenuButton
-                    size="lg"
-                    className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
-                  >
-                    <Button size="icon-sm" asChild className="size-8">
-                      <span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 256 256"
-                        >
-                          <rect width="256" height="256" fill="none"></rect>
-                          <line
-                            x1="208"
-                            y1="128"
-                            x2="128"
-                            y2="208"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="32"
-                          ></line>
-                          <line
-                            x1="192"
-                            y1="40"
-                            x2="40"
-                            y2="192"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="32"
-                          ></line>
-                        </svg>
-                      </span>
-                    </Button>
-                    <div className="grid flex-1 text-left text-sm leading-tight">
-                      <span className="truncate font-medium">
-                        {activeTeam.name}
-                      </span>
-                      <span className="truncate text-xs">
-                        {activeTeam.plan}
-                      </span>
-                    </div>
-                    <IconPlaceholder
-                      lucide="ChevronsUpDownIcon"
-                      tabler="IconSelector"
-                      hugeicons="UnfoldMoreIcon"
-                      phosphor="CaretUpDownIcon"
-                      remixicon="RiArrowUpDownLine"
-                    />
-                  </SidebarMenuButton>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuGroup>
-                    <DropdownMenuLabel>Teams</DropdownMenuLabel>
-                    {data.teams.map((team) => (
-                      <DropdownMenuItem
-                        key={team.name}
-                        onClick={() => setActiveTeam(team)}
-                      >
-                        {team.name}
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </SidebarMenuItem>
-          </SidebarMenu>
+           <div className="flex justify-between items-center p-2 rounded-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
+              <span className="text-sm">F:\个人资料\笔记</span>
+              <span className="flex items-center">
+                <IconPlaceholder
+                  lucide="FolderOpenIcon"
+                  tabler="IconNotebook"
+                  hugeicons="NotebookIcon"
+                  phosphor="NotebookIcon"
+                  remixicon="RiNotebookLine"
+                  className="size-4"
+                />
+              </span>
+            </div>
         </SidebarHeader>
         <SidebarContent>
           <SidebarGroup>
