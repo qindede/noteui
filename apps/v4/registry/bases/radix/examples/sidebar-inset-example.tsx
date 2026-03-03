@@ -1,7 +1,5 @@
 "use client"
 
-import * as React from "react"
-
 import {
   Collapsible,
   CollapsibleContent,
@@ -22,6 +20,21 @@ import {
   SidebarHeader,
   SidebarFooter,
 } from "@/registry/bases/radix/ui/sidebar"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/registry/bases/base/ui/input-group"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/registry/bases/base/ui/dropdown-menu"
+import { Separator } from "@/registry/bases/base/ui/separator"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function SidebarInsetExample() {
@@ -231,21 +244,59 @@ export default function SidebarInsetExample() {
 
         {/* Chat Input */}
         <div className="border-t p-4">
-          <div className="flex items-center gap-2 rounded-lg border bg-background px-3 py-2">
-            <input
-              type="text"
-              placeholder="输入消息..."
-              className="flex-1 bg-transparent outline-none text-sm"
-            />
-            <IconPlaceholder
-              lucide="SendIcon"
-              tabler="IconSend"
-              hugeicons="SentIcon"
-              phosphor="PaperPlaneRightIcon"
-              remixicon="RiSendPlaneLine"
-              className="size-4 cursor-pointer text-muted-foreground hover:text-foreground"
-            />
-          </div>
+        <InputGroup>
+          <InputGroupTextarea placeholder="Ask, Search or Chat..." />
+          <InputGroupAddon align="block-end">
+            <InputGroupButton
+              variant="outline"
+              className="rounded-full style-lyra:rounded-none"
+              size="icon-xs"
+              aria-label="Add"
+            >
+              <IconPlaceholder
+                lucide="PlusIcon"
+                tabler="IconPlus"
+                hugeicons="PlusSignIcon"
+                phosphor="PlusIcon"
+                remixicon="RiAddLine"
+              />
+            </InputGroupButton>
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                render={<InputGroupButton variant="ghost" />}
+              >
+                Auto
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                side="top"
+                align="start"
+                className="[--radius:0.95rem]"
+              >
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>Auto</DropdownMenuItem>
+                  <DropdownMenuItem>Agent</DropdownMenuItem>
+                  <DropdownMenuItem>Manual</DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <InputGroupText className="ml-auto">52% used</InputGroupText>
+            <Separator orientation="vertical" className="h-4!" />
+            <InputGroupButton
+              variant="default"
+              className="rounded-full style-lyra:rounded-none"
+              size="icon-xs"
+            >
+              <IconPlaceholder
+                lucide="ArrowUpIcon"
+                tabler="IconArrowUp"
+                hugeicons="ArrowUp01Icon"
+                phosphor="ArrowUpIcon"
+                remixicon="RiArrowUpLine"
+              />
+              <span className="sr-only">Send</span>
+            </InputGroupButton>
+          </InputGroupAddon>
+        </InputGroup>
         </div>
     </Sidebar>
     </SidebarProvider>
