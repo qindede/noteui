@@ -316,7 +316,35 @@ export default function SidebarInsetExample() {
         </SidebarHeader>
         <SidebarContent>
           <SidebarGroup>
-            <SidebarGroupLabel>Platform</SidebarGroupLabel>
+            <div className="flex justify-between items-center pl-2 pr-0.5 py-0.5">
+              <span className="text-xs">笔记</span>
+              <span className="flex items-center">
+                <IconPlaceholder
+                  lucide="SearchIcon"
+                  tabler="IconNotebook"
+                  hugeicons="NotebookIcon"
+                  phosphor="NotebookIcon"
+                  remixicon="RiNotebookLine"
+                  className="size-7 p-1.5 rounded-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                />
+                <IconPlaceholder
+                  lucide="FolderPlusIcon"
+                  tabler="IconNotebook"
+                  hugeicons="NotebookIcon"
+                  phosphor="NotebookIcon"
+                  remixicon="RiNotebookLine"
+                  className="size-7 p-1.5 rounded-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                />
+                <IconPlaceholder
+                  lucide="SquarePen"
+                  tabler="IconNotebook"
+                  hugeicons="NotebookIcon"
+                  phosphor="NotebookIcon"
+                  remixicon="RiNotebookLine"
+                  className="size-7 p-1.5 rounded-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                />
+              </span>
+            </div>
             <SidebarMenu>
               {data.navMain.map((item) => (
                 <Collapsible
@@ -373,72 +401,17 @@ export default function SidebarInsetExample() {
           </SidebarGroup>
         </SidebarContent>
         <SidebarFooter>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <SidebarMenuButton
-                    size="lg"
-                    className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
-                  >
-                    <Avatar>
-                      <AvatarImage
-                        src={data.user.avatar}
-                        alt={data.user.name}
-                      />
-                      <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-                    </Avatar>
-                    <div className="grid flex-1 text-left text-sm leading-tight">
-                      <span className="truncate font-medium">
-                        {data.user.name}
-                      </span>
-                      <span className="truncate text-xs">
-                        {data.user.email}
-                      </span>
-                    </div>
-                    <IconPlaceholder
-                      lucide="ChevronsUpDownIcon"
-                      tabler="IconSelector"
-                      hugeicons="UnfoldMoreIcon"
-                      phosphor="CaretUpDownIcon"
-                      remixicon="RiArrowUpDownLine"
-                    />
-                  </SidebarMenuButton>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <DropdownMenuGroup>
-                    <DropdownMenuLabel>
-                      <Item size="xs">
-                        <ItemMedia>
-                          <Avatar>
-                            <AvatarImage
-                              src={data.user.avatar}
-                              alt={data.user.name}
-                            />
-                            <AvatarFallback>CN</AvatarFallback>
-                          </Avatar>
-                        </ItemMedia>
-                        <ItemContent>
-                          <ItemTitle>{data.user.name}</ItemTitle>
-                          <ItemDescription> {data.user.email}</ItemDescription>
-                        </ItemContent>
-                      </Item>
-                    </DropdownMenuLabel>
-                  </DropdownMenuGroup>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem>Account</DropdownMenuItem>
-                    <DropdownMenuItem>Billing</DropdownMenuItem>
-                    <DropdownMenuItem>Settings</DropdownMenuItem>
-                  </DropdownMenuGroup>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem>Log out</DropdownMenuItem>
-                  </DropdownMenuGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </SidebarMenuItem>
-          </SidebarMenu>
+          <div className="flex text-sm text-muted-foreground gap-2">
+            <IconPlaceholder
+              lucide="DatabaseZap"
+              tabler="IconInfoCircle"
+              hugeicons="Info01Icon"
+              phosphor="InfoCircleIcon"
+              remixicon="RiInfoLine"
+              className="size-4"
+            />
+            2,302 chunks / 126 files
+          </div>
         </SidebarFooter>
         <SidebarRail />
       </Sidebar>
