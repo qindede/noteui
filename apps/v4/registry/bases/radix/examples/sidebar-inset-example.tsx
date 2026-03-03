@@ -12,14 +12,11 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarInset,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
   SidebarProvider,
   SidebarTrigger,
   SidebarHeader,
@@ -29,185 +26,6 @@ import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function SidebarInsetExample() {
   const data = {
-    user: {
-      name: "shadcn",
-      email: "m@example.com",
-      avatar: "/avatars/shadcn.jpg",
-    },
-    teams: [
-      {
-        name: "Acme Inc",
-        plan: "Enterprise",
-      },
-      {
-        name: "Acme Corp.",
-        plan: "Startup",
-      },
-      {
-        name: "Evil Corp.",
-        plan: "Free",
-      },
-    ],
-    navMain: [
-      {
-        title: "Playground",
-        url: "#",
-        icon: (
-          <IconPlaceholder
-            lucide="TerminalSquareIcon"
-            tabler="IconTerminal2"
-            hugeicons="ComputerTerminalIcon"
-            phosphor="TerminalIcon"
-            remixicon="RiTerminalBoxLine"
-          />
-        ),
-        isActive: true,
-        items: [
-          {
-            title: "History",
-            url: "#",
-          },
-          {
-            title: "Starred",
-            url: "#",
-          },
-          {
-            title: "Settings",
-            url: "#",
-          },
-        ],
-      },
-      {
-        title: "Models",
-        url: "#",
-        icon: (
-          <IconPlaceholder
-            lucide="BotIcon"
-            tabler="IconRobot"
-            hugeicons="RoboticIcon"
-            phosphor="RobotIcon"
-            remixicon="RiRobotLine"
-          />
-        ),
-        items: [
-          {
-            title: "Genesis",
-            url: "#",
-          },
-          {
-            title: "Explorer",
-            url: "#",
-          },
-          {
-            title: "Quantum",
-            url: "#",
-          },
-        ],
-      },
-      {
-        title: "Documentation",
-        url: "#",
-        icon: (
-          <IconPlaceholder
-            lucide="BookOpen"
-            tabler="IconBook"
-            hugeicons="BookOpen02Icon"
-            phosphor="BookOpenIcon"
-            remixicon="RiBookOpenLine"
-          />
-        ),
-        items: [
-          {
-            title: "Introduction",
-            url: "#",
-          },
-          {
-            title: "Get Started",
-            url: "#",
-          },
-          {
-            title: "Tutorials",
-            url: "#",
-          },
-          {
-            title: "Changelog",
-            url: "#",
-          },
-        ],
-      },
-      {
-        title: "Settings",
-        url: "#",
-        icon: (
-          <IconPlaceholder
-            lucide="Settings2Icon"
-            tabler="IconSettings"
-            hugeicons="Settings05Icon"
-            phosphor="GearIcon"
-            remixicon="RiSettingsLine"
-          />
-        ),
-        items: [
-          {
-            title: "General",
-            url: "#",
-          },
-          {
-            title: "Team",
-            url: "#",
-          },
-          {
-            title: "Billing",
-            url: "#",
-          },
-          {
-            title: "Limits",
-            url: "#",
-          },
-        ],
-      },
-    ],
-    projects: [
-      {
-        name: "Design Engineering",
-        url: "#",
-        icon: (
-          <IconPlaceholder
-            lucide="FrameIcon"
-            tabler="IconFrame"
-            hugeicons="CropIcon"
-            phosphor="CropIcon"
-            remixicon="RiCropLine"
-          />
-        ),
-      },
-      {
-        name: "Sales & Marketing",
-        url: "#",
-        icon: (
-          <IconPlaceholder
-            lucide="PieChartIcon"
-            tabler="IconChartPie"
-            hugeicons="PieChartIcon"
-            phosphor="ChartPieIcon"
-            remixicon="RiPieChartLine"
-          />
-        ),
-      },
-      {
-        name: "Travel",
-        url: "#",
-        icon: (
-          <IconPlaceholder
-            lucide="MapIcon"
-            tabler="IconMap"
-            hugeicons="MapsIcon"
-            phosphor="MapTrifoldIcon"
-            remixicon="RiMapLine"
-          />
-        ),
-      },
-    ],
     tree: [
       [
         "app",
@@ -235,8 +53,6 @@ export default function SidebarInsetExample() {
       "README.md",
     ],
   }
-
-  const [activeTeam, setActiveTeam] = React.useState(data.teams[0])
 
   return (
     <SidebarProvider>
@@ -295,90 +111,7 @@ export default function SidebarInsetExample() {
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
-          <SidebarGroup>
-            <div className="flex justify-between items-center pl-2 pr-0.5 py-0.5">
-              <span className="text-xs">笔记</span>
-              <span className="flex items-center">
-                <IconPlaceholder
-                  lucide="SearchIcon"
-                  tabler="IconNotebook"
-                  hugeicons="NotebookIcon"
-                  phosphor="NotebookIcon"
-                  remixicon="RiNotebookLine"
-                  className="size-7 p-1.5 rounded-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-                />
-                <IconPlaceholder
-                  lucide="FolderPlusIcon"
-                  tabler="IconNotebook"
-                  hugeicons="NotebookIcon"
-                  phosphor="NotebookIcon"
-                  remixicon="RiNotebookLine"
-                  className="size-7 p-1.5 rounded-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-                />
-                <IconPlaceholder
-                  lucide="SquarePen"
-                  tabler="IconNotebook"
-                  hugeicons="NotebookIcon"
-                  phosphor="NotebookIcon"
-                  remixicon="RiNotebookLine"
-                  className="size-7 p-1.5 rounded-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-                />
-              </span>
-            </div>
-            <SidebarMenu>
-              {data.navMain.map((item) => (
-                <Collapsible
-                  key={item.title}
-                  asChild
-                  defaultOpen={item.isActive}
-                  className="group/collapsible"
-                >
-                  <SidebarMenuItem>
-                    <SidebarMenuButton tooltip={item.title} asChild>
-                      <CollapsibleTrigger>
-                        {item.icon}
-                        <span>{item.title}</span>
-                        <IconPlaceholder
-                          lucide="ChevronRightIcon"
-                          tabler="IconChevronRight"
-                          hugeicons="ArrowRight01Icon"
-                          phosphor="CaretRightIcon"
-                          remixicon="RiArrowRightSLine"
-                          className="ml-auto transition-transform duration-100 group-data-open/collapsible:rotate-90"
-                        />
-                      </CollapsibleTrigger>
-                    </SidebarMenuButton>
-                    <CollapsibleContent>
-                      <SidebarMenuSub>
-                        {item.items?.map((subItem) => (
-                          <SidebarMenuSubItem key={subItem.title}>
-                            <SidebarMenuSubButton asChild>
-                              <a href={subItem.url}>{subItem.title}</a>
-                            </SidebarMenuSubButton>
-                          </SidebarMenuSubItem>
-                        ))}
-                      </SidebarMenuSub>
-                    </CollapsibleContent>
-                  </SidebarMenuItem>
-                </Collapsible>
-              ))}
-            </SidebarMenu>
-          </SidebarGroup>
-          <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-            <SidebarGroupLabel>Projects</SidebarGroupLabel>
-            <SidebarMenu>
-              {data.projects.map((item) => (
-                <SidebarMenuItem key={item.name}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      {item.icon}
-                      {item.name}
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroup>
+
         </SidebarContent>
         <SidebarFooter>
           <div className="flex text-sm text-muted-foreground gap-2">
