@@ -1,108 +1,51 @@
-"use client"
+import { notFound } from "next/navigation"
+import { NextResponse, type NextRequest } from "next/server"
 
-import * as React from "react"
-import { cn } from "@/examples/base/lib/utils"
-import { Avatar as AvatarPrimitive } from "@base-ui/react/avatar"
+import { processMdxForLLMs } from "@/lib/llm"
+import { source } from "@/lib/source"
+import { getActiveStyle, type Style } from "@/registry/_legacy-styles"
 
-function Avatar({
-  className,
-  size = "default",
-  ...props
-}: AvatarPrimitive.Root.Props & {
-  size?: "default" | "sm" | "lg"
-}) {
-  return (
-    <AvatarPrimitive.Root
-      data-slot="avatar"
-      data-size={size}
-      className={cn(
-        "group/avatar relative flex size-8 shrink-0 rounded-full select-none after:absolute after:inset-0 after:rounded-full after:border after:border-border after:mix-blend-darken data-[size=lg]:size-10 data-[size=sm]:size-6 dark:after:mix-blend-lighten",
-        className
-      )}
-      {...props}
-    />
-  )
+export const revalidate = false
+
+function getStyleFromSlug(slug: string[] | undefined, fallbackStyle: string) {
+  // Detect base from URL: /docs/components/base/... or /docs/components/radix/...
+  if (slug && slug[0] === "components" && slug[1]) {
+    if (slug[1] === "base") {
+      return "base-nova"
+    }
+    if (slug[1] === "radix") {
+      return "new-york-v4"
+    }
+  }
+  return fallbackStyle
 }
 
-function AvatarImage({ className, ...props }: AvatarPrimitive.Image.Props) {
-  return (
-    <AvatarPrimitive.Image
-      data-slot="avatar-image"
-      className={cn(
-        "aspect-square size-full rounded-full object-cover",
-        className
-      )}
-      {...props}
-    />
+export async function GET(
+  _req: NextRequest,
+  { params }: { params: Promise<{ slug?: string[] }> }
+) {
+  const [{ slug }, activeStyle] = await Promise.all([params, getActiveStyle()])
+
+  const page = source.getPage(slug)
+
+  if (!page) {
+    notFound()
+  }
+
+  const effectiveStyle = getStyleFromSlug(slug, activeStyle.name)
+
+  const processedContent = processMdxForLLMs(
+    await page.data.getText("raw"),
+    effectiveStyle as Style["name"]
   )
+
+  return new NextResponse(processedContent, {
+    headers: {
+      "Content-Type": "text/markdown; charset=utf-8",
+    },
+  })
 }
 
-function AvatarFallback({
-  className,
-  ...props
-}: AvatarPrimitive.Fallback.Props) {
-  return (
-    <AvatarPrimitive.Fallback
-      data-slot="avatar-fallback"
-      className={cn(
-        "flex size-full items-center justify-center rounded-full bg-muted text-sm text-muted-foreground group-data-[size=sm]/avatar:text-xs",
-        className
-      )}
-      {...props}
-    />
-  )
-}
-
-function AvatarBadge({ className, ...props }: React.ComponentProps<"span">) {
-  return (
-    <span
-      data-slot="avatar-badge"
-      className={cn(
-        "absolute end-0 bottom-0 z-10 inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground bg-blend-color ring-2 ring-background select-none",
-        "group-data-[size=sm]/avatar:size-2 group-data-[size=sm]/avatar:[&>svg]:hidden",
-        "group-data-[size=default]/avatar:size-2.5 group-data-[size=default]/avatar:[&>svg]:size-2",
-        "group-data-[size=lg]/avatar:size-3 group-data-[size=lg]/avatar:[&>svg]:size-2",
-        className
-      )}
-      {...props}
-    />
-  )
-}
-
-function AvatarGroup({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="avatar-group"
-      className={cn(
-        "group/avatar-group flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background",
-        className
-      )}
-      {...props}
-    />
-  )
-}
-
-function AvatarGroupCount({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
-  return (
-    <div
-      data-slot="avatar-group-count"
-      className={cn(
-        "relative flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-sm text-muted-foreground ring-2 ring-background group-has-data-[size=lg]/avatar-group:size-10 group-has-data-[size=sm]/avatar-group:size-6 [&>svg]:size-4 group-has-data-[size=lg]/avatar-group:[&>svg]:size-5 group-has-data-[size=sm]/avatar-group:[&>svg]:size-3",
-        className
-      )}
-      {...props}
-    />
-  )
-}
-
-export {
-  Avatar,
-  AvatarImage,
-  AvatarFallback,
-  AvatarGroup,
-  AvatarGroupCount,
-  AvatarBadge,
+export function generateStaticParams() {
+  return source.generateParams()
 }

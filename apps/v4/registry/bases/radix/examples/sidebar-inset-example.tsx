@@ -24,134 +24,140 @@ import {
   SidebarProvider,
   SidebarRail,
   SidebarTrigger,
+  SidebarHeader,
+  SidebarFooter,
 } from "@/registry/bases/radix/ui/sidebar"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/registry/bases/radix/ui/avatar"
+import { Button } from "@/registry/bases/radix/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/registry/bases/radix/ui/dropdown-menu"
+import {
+  Item,
+  ItemContent,
+  ItemDescription,
+  ItemMedia,
+  ItemTitle,
+} from "@/registry/bases/radix/ui/item"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function SidebarInsetExample() {
   const data = {
+    user: {
+      name: "shadcn",
+      email: "m@example.com",
+      avatar: "/avatars/shadcn.jpg",
+    },
+    teams: [
+      {
+        name: "Acme Inc",
+        plan: "Enterprise",
+      },
+      {
+        name: "Acme Corp.",
+        plan: "Startup",
+      },
+      {
+        name: "Evil Corp.",
+        plan: "Free",
+      },
+    ],
     navMain: [
       {
-        title: "Dashboard",
+        title: "Playground",
         url: "#",
         icon: (
           <IconPlaceholder
-            lucide="HomeIcon"
-            tabler="IconHome"
-            hugeicons="Home01Icon"
-            phosphor="HouseIcon"
-            remixicon="RiHomeLine"
+            lucide="TerminalSquareIcon"
+            tabler="IconTerminal2"
+            hugeicons="ComputerTerminalIcon"
+            phosphor="TerminalIcon"
+            remixicon="RiTerminalBoxLine"
           />
         ),
         isActive: true,
         items: [
           {
-            title: "Overview",
+            title: "History",
             url: "#",
           },
           {
-            title: "Analytics",
+            title: "Starred",
+            url: "#",
+          },
+          {
+            title: "Settings",
             url: "#",
           },
         ],
       },
       {
-        title: "Analytics",
+        title: "Models",
         url: "#",
         icon: (
           <IconPlaceholder
-            lucide="ChartLineIcon"
-            tabler="IconChartLine"
-            hugeicons="ChartIcon"
-            phosphor="ChartLineIcon"
-            remixicon="RiLineChartLine"
+            lucide="BotIcon"
+            tabler="IconRobot"
+            hugeicons="RoboticIcon"
+            phosphor="RobotIcon"
+            remixicon="RiRobotLine"
           />
         ),
         items: [
           {
-            title: "Reports",
+            title: "Genesis",
             url: "#",
           },
           {
-            title: "Metrics",
+            title: "Explorer",
+            url: "#",
+          },
+          {
+            title: "Quantum",
             url: "#",
           },
         ],
       },
       {
-        title: "Orders",
+        title: "Documentation",
         url: "#",
         icon: (
           <IconPlaceholder
-            lucide="ShoppingBagIcon"
-            tabler="IconShoppingBag"
-            hugeicons="ShoppingBag01Icon"
-            phosphor="BagIcon"
-            remixicon="RiShoppingBagLine"
+            lucide="BookOpen"
+            tabler="IconBook"
+            hugeicons="BookOpen02Icon"
+            phosphor="BookOpenIcon"
+            remixicon="RiBookOpenLine"
           />
         ),
         items: [
           {
-            title: "All Orders",
+            title: "Introduction",
             url: "#",
           },
           {
-            title: "Pending",
+            title: "Get Started",
             url: "#",
           },
           {
-            title: "Completed",
+            title: "Tutorials",
+            url: "#",
+          },
+          {
+            title: "Changelog",
             url: "#",
           },
         ],
-      },
-      {
-        title: "Products",
-        url: "#",
-        icon: (
-          <IconPlaceholder
-            lucide="ShoppingCartIcon"
-            tabler="IconShoppingCart"
-            hugeicons="ShoppingCart01Icon"
-            phosphor="ShoppingCartIcon"
-            remixicon="RiShoppingCartLine"
-          />
-        ),
-        items: [
-          {
-            title: "All Products",
-            url: "#",
-          },
-          {
-            title: "Categories",
-            url: "#",
-          },
-        ],
-      },
-      {
-        title: "Invoices",
-        url: "#",
-        icon: (
-          <IconPlaceholder
-            lucide="FileIcon"
-            tabler="IconFile"
-            hugeicons="File01Icon"
-            phosphor="FileIcon"
-            remixicon="RiFileLine"
-          />
-        ),
-      },
-      {
-        title: "Customers",
-        url: "#",
-        icon: (
-          <IconPlaceholder
-            lucide="UserIcon"
-            tabler="IconUser"
-            hugeicons="UserIcon"
-            phosphor="UserIcon"
-            remixicon="RiUserLine"
-          />
-        ),
       },
       {
         title: "Settings",
@@ -165,113 +171,275 @@ export default function SidebarInsetExample() {
             remixicon="RiSettingsLine"
           />
         ),
+        items: [
+          {
+            title: "General",
+            url: "#",
+          },
+          {
+            title: "Team",
+            url: "#",
+          },
+          {
+            title: "Billing",
+            url: "#",
+          },
+          {
+            title: "Limits",
+            url: "#",
+          },
+        ],
       },
     ],
-    navSecondary: [
+    projects: [
       {
-        title: "Support",
+        name: "Design Engineering",
         url: "#",
         icon: (
           <IconPlaceholder
-            lucide="LifeBuoy"
-            tabler="IconLifebuoy"
-            hugeicons="ChartRingIcon"
-            phosphor="LifebuoyIcon"
-            remixicon="RiLifebuoyLine"
+            lucide="FrameIcon"
+            tabler="IconFrame"
+            hugeicons="CropIcon"
+            phosphor="CropIcon"
+            remixicon="RiCropLine"
           />
         ),
       },
       {
-        title: "Feedback",
+        name: "Sales & Marketing",
         url: "#",
         icon: (
           <IconPlaceholder
-            lucide="Send"
-            tabler="IconSend"
-            hugeicons="SentIcon"
-            phosphor="PaperPlaneTiltIcon"
-            remixicon="RiSendPlaneLine"
+            lucide="PieChartIcon"
+            tabler="IconChartPie"
+            hugeicons="PieChartIcon"
+            phosphor="ChartPieIcon"
+            remixicon="RiPieChartLine"
+          />
+        ),
+      },
+      {
+        name: "Travel",
+        url: "#",
+        icon: (
+          <IconPlaceholder
+            lucide="MapIcon"
+            tabler="IconMap"
+            hugeicons="MapsIcon"
+            phosphor="MapTrifoldIcon"
+            remixicon="RiMapLine"
           />
         ),
       },
     ],
   }
 
+  const [activeTeam, setActiveTeam] = React.useState(data.teams[0])
+
   return (
     <SidebarProvider>
       <Sidebar variant="inset">
+        <SidebarHeader>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <SidebarMenuButton
+                    size="lg"
+                    className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
+                  >
+                    <Button size="icon-sm" asChild className="size-8">
+                      <span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 256 256"
+                        >
+                          <rect width="256" height="256" fill="none"></rect>
+                          <line
+                            x1="208"
+                            y1="128"
+                            x2="128"
+                            y2="208"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="32"
+                          ></line>
+                          <line
+                            x1="192"
+                            y1="40"
+                            x2="40"
+                            y2="192"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="32"
+                          ></line>
+                        </svg>
+                      </span>
+                    </Button>
+                    <div className="grid flex-1 text-left text-sm leading-tight">
+                      <span className="truncate font-medium">
+                        {activeTeam.name}
+                      </span>
+                      <span className="truncate text-xs">
+                        {activeTeam.plan}
+                      </span>
+                    </div>
+                    <IconPlaceholder
+                      lucide="ChevronsUpDownIcon"
+                      tabler="IconSelector"
+                      hugeicons="UnfoldMoreIcon"
+                      phosphor="CaretUpDownIcon"
+                      remixicon="RiArrowUpDownLine"
+                    />
+                  </SidebarMenuButton>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuGroup>
+                    <DropdownMenuLabel>Teams</DropdownMenuLabel>
+                    {data.teams.map((team) => (
+                      <DropdownMenuItem
+                        key={team.name}
+                        onClick={() => setActiveTeam(team)}
+                      >
+                        {team.name}
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarHeader>
         <SidebarContent>
           <SidebarGroup>
-            <SidebarGroupLabel>Dashboard</SidebarGroupLabel>
+            <SidebarGroupLabel>Platform</SidebarGroupLabel>
             <SidebarMenu>
               {data.navMain.map((item) => (
                 <Collapsible
                   key={item.title}
                   asChild
                   defaultOpen={item.isActive}
+                  className="group/collapsible"
                 >
                   <SidebarMenuItem>
-                    <SidebarMenuButton
-                      asChild
-                      tooltip={item.title}
-                      isActive={item.isActive}
-                    >
-                      <a href={item.url}>
+                    <SidebarMenuButton tooltip={item.title} asChild>
+                      <CollapsibleTrigger>
                         {item.icon}
                         <span>{item.title}</span>
-                      </a>
+                        <IconPlaceholder
+                          lucide="ChevronRightIcon"
+                          tabler="IconChevronRight"
+                          hugeicons="ArrowRight01Icon"
+                          phosphor="CaretRightIcon"
+                          remixicon="RiArrowRightSLine"
+                          className="ml-auto transition-transform duration-100 group-data-open/collapsible:rotate-90"
+                        />
+                      </CollapsibleTrigger>
                     </SidebarMenuButton>
-                    {item.items?.length ? (
-                      <>
-                        <CollapsibleTrigger asChild>
-                          <SidebarMenuAction className="data-[state=open]:rotate-90">
-                            <IconPlaceholder
-                              lucide="ChevronRightIcon"
-                              tabler="IconChevronRight"
-                              hugeicons="ArrowRight01Icon"
-                              phosphor="CaretRightIcon"
-                              remixicon="RiArrowRightSLine"
-                            />
-                            <span className="sr-only">Toggle</span>
-                          </SidebarMenuAction>
-                        </CollapsibleTrigger>
-                        <CollapsibleContent>
-                          <SidebarMenuSub>
-                            {item.items.map((subItem) => (
-                              <SidebarMenuSubItem key={subItem.title}>
-                                <SidebarMenuSubButton asChild>
-                                  <a href={subItem.url}>
-                                    <span>{subItem.title}</span>
-                                  </a>
-                                </SidebarMenuSubButton>
-                              </SidebarMenuSubItem>
-                            ))}
-                          </SidebarMenuSub>
-                        </CollapsibleContent>
-                      </>
-                    ) : null}
+                    <CollapsibleContent>
+                      <SidebarMenuSub>
+                        {item.items?.map((subItem) => (
+                          <SidebarMenuSubItem key={subItem.title}>
+                            <SidebarMenuSubButton asChild>
+                              <a href={subItem.url}>{subItem.title}</a>
+                            </SidebarMenuSubButton>
+                          </SidebarMenuSubItem>
+                        ))}
+                      </SidebarMenuSub>
+                    </CollapsibleContent>
                   </SidebarMenuItem>
                 </Collapsible>
               ))}
             </SidebarMenu>
           </SidebarGroup>
-          <SidebarGroup className="mt-auto">
-            <SidebarGroupContent>
-              <SidebarMenu>
-                {data.navSecondary.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild size="sm">
-                      <a href={item.url}>
-                        {item.icon}
-                        <span>{item.title}</span>
-                      </a>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
+          <SidebarGroup className="group-data-[collapsible=icon]:hidden">
+            <SidebarGroupLabel>Projects</SidebarGroupLabel>
+            <SidebarMenu>
+              {data.projects.map((item) => (
+                <SidebarMenuItem key={item.name}>
+                  <SidebarMenuButton asChild>
+                    <a href={item.url}>
+                      {item.icon}
+                      {item.name}
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
           </SidebarGroup>
         </SidebarContent>
+        <SidebarFooter>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <SidebarMenuButton
+                    size="lg"
+                    className="data-open:bg-sidebar-accent data-open:text-sidebar-accent-foreground"
+                  >
+                    <Avatar>
+                      <AvatarImage
+                        src={data.user.avatar}
+                        alt={data.user.name}
+                      />
+                      <AvatarFallback className="rounded-lg">CN</AvatarFallback>
+                    </Avatar>
+                    <div className="grid flex-1 text-left text-sm leading-tight">
+                      <span className="truncate font-medium">
+                        {data.user.name}
+                      </span>
+                      <span className="truncate text-xs">
+                        {data.user.email}
+                      </span>
+                    </div>
+                    <IconPlaceholder
+                      lucide="ChevronsUpDownIcon"
+                      tabler="IconSelector"
+                      hugeicons="UnfoldMoreIcon"
+                      phosphor="CaretUpDownIcon"
+                      remixicon="RiArrowUpDownLine"
+                    />
+                  </SidebarMenuButton>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuGroup>
+                    <DropdownMenuLabel>
+                      <Item size="xs">
+                        <ItemMedia>
+                          <Avatar>
+                            <AvatarImage
+                              src={data.user.avatar}
+                              alt={data.user.name}
+                            />
+                            <AvatarFallback>CN</AvatarFallback>
+                          </Avatar>
+                        </ItemMedia>
+                        <ItemContent>
+                          <ItemTitle>{data.user.name}</ItemTitle>
+                          <ItemDescription> {data.user.email}</ItemDescription>
+                        </ItemContent>
+                      </Item>
+                    </DropdownMenuLabel>
+                  </DropdownMenuGroup>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem>Account</DropdownMenuItem>
+                    <DropdownMenuItem>Billing</DropdownMenuItem>
+                    <DropdownMenuItem>Settings</DropdownMenuItem>
+                  </DropdownMenuGroup>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem>Log out</DropdownMenuItem>
+                  </DropdownMenuGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarFooter>
         <SidebarRail />
       </Sidebar>
       <SidebarInset>

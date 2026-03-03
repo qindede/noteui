@@ -169,24 +169,11 @@ export default function SidebarInsetExample() {
     ],
     navSecondary: [
       {
-        title: "Support",
+        title: "2,302 chunks / 126 files",
         url: "#",
         icon: (
           <IconPlaceholder
-            lucide="LifeBuoy"
-            tabler="IconLifebuoy"
-            hugeicons="ChartRingIcon"
-            phosphor="LifebuoyIcon"
-            remixicon="RiLifebuoyLine"
-          />
-        ),
-      },
-      {
-        title: "Feedback",
-        url: "#",
-        icon: (
-          <IconPlaceholder
-            lucide="Send"
+            lucide="DatabaseZapIcon"
             tabler="IconSend"
             hugeicons="SentIcon"
             phosphor="PaperPlaneTiltIcon"
