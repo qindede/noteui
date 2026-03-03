@@ -155,10 +155,10 @@ export default function SidebarInsetExample() {
       </SidebarInset>
       <Sidebar
         collapsible="none"
-        className="sticky top-0 hidden h-svh w-120 lg:flex flex-col"
+        className="sticky top-0 hidden h-svh w-100 lg:flex flex-col"
       >
         {/* 第一行：应用窗口操作 */}
-        <div className="flex items-center justify-end gap-2 px-4">
+        <div className="flex items-center justify-end">
           <div className="flex items-center gap-2 px-2 text-xs text-muted-foreground">
             最后保存：刚刚
             <IconPlaceholder
@@ -213,7 +213,7 @@ export default function SidebarInsetExample() {
         </div>
 
         {/* 第二行：聊天区域 */}
-        <div className="flex flex-1 min-h-0">
+        <div className="flex flex-1">
           {/* 窗口操作图标 */}
           <div className="h-8 w-8 flex items-center justify-center rounded-md hover:bg-muted cursor-pointer">
             <IconPlaceholder
@@ -243,8 +243,8 @@ export default function SidebarInsetExample() {
         </div>
 
         {/* Chat Input */}
-        <div className="border-t p-4">
-        <InputGroup>
+        <div className="p-4">
+        <InputGroup className="bg-background">
           <InputGroupTextarea placeholder="Ask, Search or Chat..." />
           <InputGroupAddon align="block-end">
             <InputGroupButton
@@ -279,8 +279,8 @@ export default function SidebarInsetExample() {
                 </DropdownMenuGroup>
               </DropdownMenuContent>
             </DropdownMenu>
-            <InputGroupText className="ml-auto">52% used</InputGroupText>
-            <Separator orientation="vertical" className="h-4!" />
+            <InputGroupText className="ml-auto">DeepSeek V4</InputGroupText>
+            <Separator orientation="vertical" className="mt-1 h-4!" />
             <InputGroupButton
               variant="default"
               className="rounded-full style-lyra:rounded-none"
