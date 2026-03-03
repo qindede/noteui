@@ -200,52 +200,54 @@ export default function SidebarInsetExample() {
         </div>
 
         {/* 第二行：聊天区域 */}
-        <div className="flex flex-col flex-1 min-h-0">
+        <div className="flex flex-1 min-h-0">
           {/* 窗口操作图标 */}
-          <div className="flex items-center gap-2 py-2">
+          <div className="h-8 w-8 flex items-center justify-center rounded-md hover:bg-muted cursor-pointer">
             <IconPlaceholder
               lucide="HistoryIcon"
               tabler="IconHistory"
               hugeicons="Clock01Icon"
               phosphor="ClockCounterClockwiseIcon"
               remixicon="RiHistoryLine"
-              className="size-4 cursor-pointer hover:text-muted-foreground"
+              className="size-4"
             />
+          </div>
+          <div className="h-8 w-8 flex items-center justify-center rounded-md hover:bg-muted cursor-pointer">
             <IconPlaceholder
               lucide="PlusIcon"
               tabler="IconPlus"
               hugeicons="PlusSignIcon"
               phosphor="PlusIcon"
               remixicon="RiAddLine"
-              className="size-4 cursor-pointer hover:text-muted-foreground"
+              className="size-4"
             />
           </div>
+        </div>
 
-          {/* 聊天区 */}
-          <div className="flex-1 overflow-auto p-4">
-            {/* 聊天内容将在这里显示 */}
-          </div>
+        {/* 聊天区 */}
+        <div className="flex-1 overflow-auto p-4">
+          {/* 聊天内容将在这里显示 */}
+        </div>
 
-          {/* Chat Input */}
-          <div className="border-t p-4">
-            <div className="flex items-center gap-2 rounded-lg border bg-background px-3 py-2">
-              <input
-                type="text"
-                placeholder="输入消息..."
-                className="flex-1 bg-transparent outline-none text-sm"
-              />
-              <IconPlaceholder
-                lucide="SendIcon"
-                tabler="IconSend"
-                hugeicons="SentIcon"
-                phosphor="PaperPlaneRightIcon"
-                remixicon="RiSendPlaneLine"
-                className="size-4 cursor-pointer text-muted-foreground hover:text-foreground"
-              />
-            </div>
+        {/* Chat Input */}
+        <div className="border-t p-4">
+          <div className="flex items-center gap-2 rounded-lg border bg-background px-3 py-2">
+            <input
+              type="text"
+              placeholder="输入消息..."
+              className="flex-1 bg-transparent outline-none text-sm"
+            />
+            <IconPlaceholder
+              lucide="SendIcon"
+              tabler="IconSend"
+              hugeicons="SentIcon"
+              phosphor="PaperPlaneRightIcon"
+              remixicon="RiSendPlaneLine"
+              className="size-4 cursor-pointer text-muted-foreground hover:text-foreground"
+            />
           </div>
         </div>
-      </Sidebar>
+    </Sidebar>
     </SidebarProvider>
   )
 }
