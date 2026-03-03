@@ -15,40 +15,16 @@ import {
   SidebarGroupLabel,
   SidebarInset,
   SidebarMenu,
-  SidebarMenuAction,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   SidebarProvider,
-  SidebarRail,
   SidebarTrigger,
   SidebarHeader,
   SidebarFooter,
 } from "@/registry/bases/radix/ui/sidebar"
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/bases/radix/ui/avatar"
-import { Button } from "@/registry/bases/radix/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/registry/bases/radix/ui/dropdown-menu"
-import {
-  Item,
-  ItemContent,
-  ItemDescription,
-  ItemMedia,
-  ItemTitle,
-} from "@/registry/bases/radix/ui/item"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function SidebarInsetExample() {
@@ -232,6 +208,32 @@ export default function SidebarInsetExample() {
         ),
       },
     ],
+    tree: [
+      [
+        "app",
+        [
+          "api",
+          ["hello", ["route.ts"]],
+          "page.tsx",
+          "layout.tsx",
+          ["blog", ["page.tsx"]],
+        ],
+      ],
+      [
+        "components",
+        ["ui", "button.tsx", "card.tsx"],
+        "header.tsx",
+        "footer.tsx",
+      ],
+      ["lib", ["util.ts"]],
+      ["public", "favicon.ico", "vercel.svg"],
+      ".eslintrc.json",
+      ".gitignore",
+      "next.config.js",
+      "tailwind.config.js",
+      "package.json",
+      "README.md",
+    ],
   }
 
   const [activeTeam, setActiveTeam] = React.useState(data.teams[0])
@@ -240,21 +242,59 @@ export default function SidebarInsetExample() {
     <SidebarProvider>
       <Sidebar variant="inset">
         <SidebarHeader>
-           <div className="flex justify-between items-center p-2 rounded-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
-              <span className="text-sm">F:\个人资料\笔记</span>
+          <div className="flex justify-between items-center p-2 rounded-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
+            <span className="text-sm">F:\个人资料\笔记</span>
+            <span className="flex items-center">
+              <IconPlaceholder
+                lucide="FolderOpenIcon"
+                tabler="IconNotebook"
+                hugeicons="NotebookIcon"
+                phosphor="NotebookIcon"
+                remixicon="RiNotebookLine"
+                className="size-4"
+              />
+            </span>
+          </div>
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarGroup>
+            <div className="flex justify-between items-center pl-2 pr-0.5 py-0.5">
+              <span className="text-xs">笔记</span>
               <span className="flex items-center">
                 <IconPlaceholder
-                  lucide="FolderOpenIcon"
+                  lucide="SearchIcon"
                   tabler="IconNotebook"
                   hugeicons="NotebookIcon"
                   phosphor="NotebookIcon"
                   remixicon="RiNotebookLine"
-                  className="size-4"
+                  className="size-7 p-1.5 rounded-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                />
+                <IconPlaceholder
+                  lucide="FolderPlusIcon"
+                  tabler="IconNotebook"
+                  hugeicons="NotebookIcon"
+                  phosphor="NotebookIcon"
+                  remixicon="RiNotebookLine"
+                  className="size-7 p-1.5 rounded-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                />
+                <IconPlaceholder
+                  lucide="SquarePen"
+                  tabler="IconNotebook"
+                  hugeicons="NotebookIcon"
+                  phosphor="NotebookIcon"
+                  remixicon="RiNotebookLine"
+                  className="size-7 p-1.5 rounded-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
                 />
               </span>
             </div>
-        </SidebarHeader>
-        <SidebarContent>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {data.tree.map((item, index) => (
+                  <Tree key={index} item={item} />
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
           <SidebarGroup>
             <div className="flex justify-between items-center pl-2 pr-0.5 py-0.5">
               <span className="text-xs">笔记</span>
@@ -353,7 +393,6 @@ export default function SidebarInsetExample() {
             2,302 chunks / 126 files
           </div>
         </SidebarFooter>
-        <SidebarRail />
       </Sidebar>
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
@@ -369,5 +408,66 @@ export default function SidebarInsetExample() {
         </div>
       </SidebarInset>
     </SidebarProvider>
+  )
+}
+
+type TreeItem = string | TreeItem[]
+
+function Tree({ item }: { item: TreeItem }) {
+  const [name, ...items] = Array.isArray(item) ? item : [item]
+
+  if (!items.length) {
+    return (
+      <SidebarMenuButton
+        isActive={name === "button.tsx"}
+        className="data-[active=true]:bg-transparent"
+      >
+        <IconPlaceholder
+          lucide="FileIcon"
+          tabler="IconFile"
+          hugeicons="FileIcon"
+          phosphor="FileIcon"
+          remixicon="RiFileLine"
+        />
+        {name}
+      </SidebarMenuButton>
+    )
+  }
+
+  return (
+    <SidebarMenuItem>
+      <Collapsible
+        className="group/collapsible [&[data-state=open]>button>svg:first-child]:rotate-90"
+        defaultOpen={name === "components" || name === "ui"}
+      >
+        <CollapsibleTrigger asChild>
+          <SidebarMenuButton>
+            <IconPlaceholder
+              lucide="ChevronRightIcon"
+              tabler="IconChevronRight"
+              hugeicons="ArrowRight01Icon"
+              phosphor="CaretRightIcon"
+              remixicon="RiArrowRightSLine"
+              className="transition-transform"
+            />
+            <IconPlaceholder
+              lucide="FolderIcon"
+              tabler="IconFolder"
+              hugeicons="FolderIcon"
+              phosphor="FolderIcon"
+              remixicon="RiFolderLine"
+            />
+            {name}
+          </SidebarMenuButton>
+        </CollapsibleTrigger>
+        <CollapsibleContent>
+          <SidebarMenuSub>
+            {items.map((subItem, index) => (
+              <Tree key={index} item={subItem} />
+            ))}
+          </SidebarMenuSub>
+        </CollapsibleContent>
+      </Collapsible>
+    </SidebarMenuItem>
   )
 }
