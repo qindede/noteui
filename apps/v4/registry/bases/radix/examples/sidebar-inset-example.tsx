@@ -142,9 +142,90 @@ export default function SidebarInsetExample() {
       </SidebarInset>
       <Sidebar
         collapsible="none"
-        className="sticky top-0 hidden h-svh w-120 lg:flex"
+        className="sticky top-0 hidden h-svh w-120 lg:flex flex-col"
       >
-        {/* 右栏内容 */}
+        {/* 第一行：应用窗口操作 */}
+        <div className="flex items-center justify-end gap-2 px-4 py-2 border-b">
+          <IconPlaceholder
+            lucide="MinusIcon"
+            tabler="IconMinus"
+            hugeicons="MinusSignIcon"
+            phosphor="MinusIcon"
+            remixicon="RiSubtractLine"
+            className="size-4 cursor-pointer hover:text-muted-foreground"
+          />
+          <IconPlaceholder
+            lucide="SquareIcon"
+            tabler="IconSquare"
+            hugeicons="SquareIcon"
+            phosphor="SquareIcon"
+            remixicon="RiSquareLine"
+            className="size-4 cursor-pointer hover:text-muted-foreground"
+          />
+          <IconPlaceholder
+            lucide="XIcon"
+            tabler="IconX"
+            hugeicons="Cancel01Icon"
+            phosphor="XIcon"
+            remixicon="RiCloseLine"
+            className="size-4 cursor-pointer hover:text-destructive"
+          />
+        </div>
+
+        {/* 第二行：聊天区域 */}
+        <div className="flex flex-col flex-1 min-h-0">
+          {/* 窗口操作图标 */}
+          <div className="flex items-center justify-end gap-2 px-4 py-2 border-b">
+            <IconPlaceholder
+              lucide="SearchIcon"
+              tabler="IconSearch"
+              hugeicons="Search01Icon"
+              phosphor="MagnifyingGlassIcon"
+              remixicon="RiSearchLine"
+              className="size-4 cursor-pointer hover:text-muted-foreground"
+            />
+            <IconPlaceholder
+              lucide="HistoryIcon"
+              tabler="IconHistory"
+              hugeicons="Clock01Icon"
+              phosphor="ClockCounterClockwiseIcon"
+              remixicon="RiHistoryLine"
+              className="size-4 cursor-pointer hover:text-muted-foreground"
+            />
+            <IconPlaceholder
+              lucide="PlusIcon"
+              tabler="IconPlus"
+              hugeicons="PlusSignIcon"
+              phosphor="PlusIcon"
+              remixicon="RiAddLine"
+              className="size-4 cursor-pointer hover:text-muted-foreground"
+            />
+          </div>
+
+          {/* 聊天区 */}
+          <div className="flex-1 overflow-auto p-4">
+            {/* 聊天内容将在这里显示 */}
+          </div>
+
+          {/* Chat Input */}
+          <div className="border-t p-4">
+            <div className="flex items-center gap-2 rounded-lg border bg-background px-3 py-2">
+              <input
+                type="text"
+                placeholder="输入消息..."
+                className="flex-1 bg-transparent outline-none text-sm"
+              />
+              <IconPlaceholder
+                lucide="SendIcon"
+                tabler="IconSend"
+                hugeicons="SentIcon"
+                phosphor="PaperPlaneRightIcon"
+                remixicon="RiSendPlaneLine"
+                className="size-4 cursor-pointer text-muted-foreground hover:text-foreground"
+              />
+            </div>
+          </div>
+        </div>
       </Sidebar>
     </SidebarProvider>
   )
