@@ -145,7 +145,7 @@ export default function SidebarInsetExample() {
         </SidebarFooter>
       </Sidebar>
       <SidebarInset className="min-h-0 overflow-hidden">
-        <header className="sticky top-0 z-10 flex h-16 shrink-0 items-center gap-2 border-b bg-background px-4">
+        <header className="sticky top-0 z-10 flex h-12 shrink-0 items-center gap-2 border-b bg-background px-4">
           <SidebarTrigger className="-ml-1" />
         </header>
         <ScrollArea className="min-h-0 flex-1 overscroll-y-contain">
