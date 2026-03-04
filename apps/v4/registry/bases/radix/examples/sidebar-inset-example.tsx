@@ -147,6 +147,21 @@ export default function SidebarInsetExample() {
       <SidebarInset className="min-h-0 overflow-hidden">
         <header className="sticky top-0 z-10 flex h-12 shrink-0 items-center gap-2 border-b bg-background px-4">
           <SidebarTrigger className="-ml-1" />
+          <div className="flex items-center gap-1">
+            <button className="group inline-flex h-8 max-w-[200px] items-center gap-2 rounded-md bg-muted px-3 text-sm font-medium transition-colors hover:bg-muted/80">
+              <span className="truncate">文档示例.md</span>
+              <span className="ml-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-sm transition-opacity hover:bg-background">
+                <IconPlaceholder
+                  lucide="XIcon"
+                  tabler="IconX"
+                  hugeicons="Cancel01Icon"
+                  phosphor="XIcon"
+                  remixicon="RiCloseLine"
+                  className="size-3"
+                />
+              </span>
+            </button>
+          </div>
         </header>
         <ScrollArea className="min-h-0 flex-1 overscroll-y-contain">
           <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 p-4">
