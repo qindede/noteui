@@ -265,6 +265,14 @@ export default function SidebarInsetExample() {
                   className="size-3"
                 />
                 <span>找到6篇知识库资料</span>
+                <IconPlaceholder
+                  lucide="ChevronDownIcon"
+                  tabler="IconChevronDown"
+                  hugeicons="ArrowDown01Icon"
+                  phosphor="CaretDownIcon"
+                  remixicon="RiArrowDownSLine"
+                  className="size-3"
+                />
               </div>
 
               {/* Agent: 详细回复 */}
