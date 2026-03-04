@@ -143,17 +143,71 @@ export default function SidebarInsetExample() {
           </div>
         </SidebarFooter>
       </Sidebar>
-      <SidebarInset>
+      <SidebarInset className="h-svh overflow-hidden">
         <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
           <SidebarTrigger className="-ml-1" />
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
+        <div className="flex-1 overflow-auto p-4">
+          <div className="mx-auto w-full max-w-3xl">
+            <h1 className="text-3xl font-bold tracking-tight">开始使用</h1>
+            <p className="mt-4 text-lg text-muted-foreground">
+              这是一个示例文档页面，展示了如何在侧边栏布局中呈现 Markdown 内容。
+            </p>
+
+            <div className="mt-8 space-y-6">
+              <section>
+                <h2 className="text-2xl font-semibold tracking-tight">概述</h2>
+                <p className="mt-3 text-muted-foreground leading-7">
+                  侧边栏组件提供了一种灵活的方式来组织应用程序的导航结构。
+                  它支持可折叠菜单、嵌套项目和响应式布局，适用于各种复杂的应用场景。
+                </p>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-semibold tracking-tight">特性</h2>
+                <ul className="mt-3 list-disc list-inside space-y-2 text-muted-foreground">
+                  <li>完全可访问的键盘导航支持</li>
+                  <li>响应式设计，适配各种屏幕尺寸</li>
+                  <li>可折叠和展开的菜单组</li>
+                  <li>与 Radix UI 组件无缝集成</li>
+                  <li>支持深色模式和主题自定义</li>
+                </ul>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-semibold tracking-tight">安装</h2>
+                <div className="mt-3 rounded-lg bg-muted p-4">
+                  <code className="text-sm font-mono">npm install @radix-ui/react-sidebar</code>
+                </div>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-semibold tracking-tight">基本用法</h2>
+                <p className="mt-3 text-muted-foreground leading-7">
+                  以下是一个简单的使用示例：
+                </p>
+                <div className="mt-3 rounded-lg bg-muted p-4">
+                  <pre className="text-sm font-mono overflow-x-auto">
+{`<SidebarProvider>
+  <Sidebar>
+    <SidebarContent>
+      <SidebarGroup>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton>
+              首页
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarGroup>
+    </SidebarContent>
+  </Sidebar>
+</SidebarProvider>`}
+                  </pre>
+                </div>
+              </section>
+            </div>
           </div>
-          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
         </div>
       </SidebarInset>
       <Sidebar
