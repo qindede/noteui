@@ -1,5 +1,7 @@
 "use client"
 
+import * as React from "react"
+
 import {
   Collapsible,
   CollapsibleContent,
@@ -36,8 +38,24 @@ import {
 } from "@/registry/bases/base/ui/dropdown-menu"
 import { Separator } from "@/registry/bases/base/ui/separator"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
+import { cn } from "@/lib/utils"
 
 export default function SidebarInsetExample() {
+  const [messages, setMessages] = React.useState([
+    {
+      role: "agent",
+      content: "已连接本地笔记库 (共 142 篇文档)。你可以向我提问，或者让我基于现有资料帮你续写当前笔记。",
+    },
+    {
+      role: "user",
+      content: "基于本地库，解释 Shor算法是如何威胁到RSA 加密的？",
+    },
+    {
+      role: "agent",
+      content: "RSA加密的安全性基于大整数质因数分解的经典计算困难性[1]。 传统计算机利用最快的通用数域筛法（GNFS）也需要耗费数百万年的时间才能破解2048位的RSA密钥。然而，Shor算法利用了量子计算的特性。它将因子分解问题转化为了求模指数函数周期的寻找问题[2]。 通过量子傅里叶变换，该算法可以在多项式时间内找到周期，从而快速计算出质因数。这意味着一旦拥有足够规模和容错能力的量子计算机问世，现有的RSA加密体系将被瞬间瓦解。",
+    },
+  ])
+
   const data = {
     tree: [
       [
@@ -238,8 +256,21 @@ export default function SidebarInsetExample() {
         </div>
 
         {/* 聊天区 */}
-        <div className="flex-1 overflow-auto p-4 pl-2.5 pb-0">
-          {/* 聊天内容将在这里显示 */}
+        <div className="flex-1 overflow-auto p-4 pl-2.5">
+          <div className="flex flex-col gap-4 justify-end min-h-full">
+            {messages.map((message, index) => (
+              <div
+                key={index}
+                className={cn(
+                  "text-sm",
+                  message.role === "user" &&
+                    "flex w-max max-w-[85%] flex-col gap-2 rounded-lg rounded-tr-none px-3 py-2 ml-auto bg-primary text-primary-foreground"
+                )}
+              >
+                {message.content}
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Chat Input */}
