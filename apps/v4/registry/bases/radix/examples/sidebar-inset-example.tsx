@@ -188,7 +188,7 @@ export default function SidebarInsetExample() {
                 </p>
                 <div className="mt-3 rounded-lg bg-muted p-4">
                   <pre className="text-sm font-mono overflow-x-auto">
-{`<SidebarProvider>
+                    {`<SidebarProvider>
   <Sidebar>
     <SidebarContent>
       <SidebarGroup>
@@ -270,32 +270,28 @@ export default function SidebarInsetExample() {
         </div>
 
         {/* 第二行：聊天标题区 */}
-        <div className="flex mt-2 items-center justify-between">
+        <div className="flex mt-2 pl-2.5 pr-3 items-center justify-between">
           {/* 窗口操作图标 */}
-          <div className="text-sm text-muted-foreground flex items-center gap-2 px-2 flex-1">
-            解释 Shor算法是如何威胁到RSA 加密
+          <div className="h-8 w-8 flex items-center justify-center rounded-md hover:bg-muted cursor-pointer">
+            <IconPlaceholder
+              lucide="MessageSquarePlusIcon"
+              tabler="IconMessage2Plus"
+              hugeicons="MessageAdd01Icon"
+              phosphor="ChatCircleDotsIcon"
+              remixicon="RiChatNewLine"
+              className="size-4"
+            />
           </div>
-          <div className="flex items-center gap-1">
-            <div className="h-8 w-8 flex items-center justify-center rounded-md hover:bg-muted cursor-pointer">
-              <IconPlaceholder
-                lucide="HistoryIcon"
-                tabler="IconHistory"
-                hugeicons="Clock01Icon"
-                phosphor="ClockCounterClockwiseIcon"
-                remixicon="RiHistoryLine"
-                className="size-4"
-              />
-            </div>
-            <div className="h-8 w-8 flex items-center justify-center rounded-md hover:bg-muted cursor-pointer">
-              <IconPlaceholder
-                lucide="MessageSquarePlusIcon"
-                tabler="IconMessage2Plus"
-                hugeicons="MessageAdd01Icon"
-                phosphor="ChatCircleDotsIcon"
-                remixicon="RiChatNewLine"
-                className="size-4"
-              />
-            </div>
+          <div className="text-sm text-muted-foreground flex items-center gap-2">
+            <IconPlaceholder
+              lucide="ChevronDownIcon"
+              tabler="IconHistory"
+              hugeicons="Clock01Icon"
+              phosphor="ClockCounterClockwiseIcon"
+              remixicon="RiHistoryLine"
+              className="size-4"
+            />
+            解释 Shor算法是如何威胁到RSA 加密
           </div>
         </div>
 
