@@ -22,6 +22,7 @@ import {
   SidebarHeader,
   SidebarFooter,
 } from "@/registry/bases/radix/ui/sidebar"
+import { ScrollArea } from "@/registry/bases/radix/ui/scroll-area"
 import {
   InputGroup,
   InputGroupAddon,
@@ -71,7 +72,7 @@ export default function SidebarInsetExample() {
   }
 
   return (
-    <SidebarProvider>
+    <SidebarProvider className="h-svh overflow-hidden">
       <Sidebar variant="inset">
         <SidebarHeader>
           <div className="flex justify-between items-center p-2 rounded-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
@@ -143,12 +144,12 @@ export default function SidebarInsetExample() {
           </div>
         </SidebarFooter>
       </Sidebar>
-      <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+      <SidebarInset className="min-h-0 overflow-hidden">
+        <header className="sticky top-0 z-10 flex h-16 shrink-0 items-center gap-2 border-b bg-background px-4">
           <SidebarTrigger className="-ml-1" />
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="mx-auto w-full max-w-3xl">
+        <ScrollArea className="min-h-0 flex-1 overscroll-y-contain">
+          <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 p-4">
             <h1 className="text-3xl font-bold tracking-tight">开始使用</h1>
             <p className="mt-4 text-lg text-muted-foreground">
               这是一个示例文档页面，展示了如何在侧边栏布局中呈现 Markdown 内容。
@@ -208,7 +209,7 @@ export default function SidebarInsetExample() {
               </section>
             </div>
           </div>
-        </div>
+        </ScrollArea>
       </SidebarInset>
       <Sidebar
         collapsible="none"
