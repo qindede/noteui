@@ -96,7 +96,7 @@ export default function SidebarInsetExample() {
                   hugeicons="NotebookIcon"
                   phosphor="NotebookIcon"
                   remixicon="RiNotebookLine"
-                  className="size-7 p-1.5 rounded-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                  className="size-8 p-2 rounded-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
                 />
                 <IconPlaceholder
                   lucide="FolderPlusIcon"
@@ -104,7 +104,7 @@ export default function SidebarInsetExample() {
                   hugeicons="NotebookIcon"
                   phosphor="NotebookIcon"
                   remixicon="RiNotebookLine"
-                  className="size-7 p-1.5 rounded-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                  className="size-8 p-2 rounded-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
                 />
                 <IconPlaceholder
                   lucide="SquarePen"
@@ -112,7 +112,7 @@ export default function SidebarInsetExample() {
                   hugeicons="NotebookIcon"
                   phosphor="NotebookIcon"
                   remixicon="RiNotebookLine"
-                  className="size-7 p-1.5 rounded-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                  className="size-8 p-2 rounded-sm hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
                 />
               </span>
             </div>
@@ -155,7 +155,7 @@ export default function SidebarInsetExample() {
       </SidebarInset>
       <Sidebar
         collapsible="none"
-        className="sticky top-0 hidden h-svh w-100 lg:flex flex-col"
+        className="sticky top-0 h-svh w-100 lg:flex flex-col"
       >
         {/* 第一行：应用窗口操作 */}
         <div className="flex items-center justify-end">
@@ -213,7 +213,7 @@ export default function SidebarInsetExample() {
         </div>
 
         {/* 第二行：聊天区域 */}
-        <div className="flex flex-1">
+        <div className="flex">
           {/* 窗口操作图标 */}
           <div className="h-8 w-8 flex items-center justify-center rounded-md hover:bg-muted cursor-pointer">
             <IconPlaceholder
@@ -238,12 +238,12 @@ export default function SidebarInsetExample() {
         </div>
 
         {/* 聊天区 */}
-        <div className="flex-1 overflow-auto p-4">
+        <div className="flex-1 overflow-auto p-4 pl-2.5 pb-0">
           {/* 聊天内容将在这里显示 */}
         </div>
 
         {/* Chat Input */}
-        <div className="p-4">
+        <div className="p-4 pl-2.5">
         <InputGroup className="bg-background">
           <InputGroupTextarea placeholder="Ask, Search or Chat..." />
           <InputGroupAddon align="block-end">

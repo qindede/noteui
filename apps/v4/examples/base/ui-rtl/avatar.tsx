@@ -1,51 +1,113 @@
-import { notFound } from "next/navigation"
-import { NextResponse, type NextRequest } from "next/server"
+"use client"
 
-import { processMdxForLLMs } from "@/lib/llm"
-import { source } from "@/lib/source"
-import { getActiveStyle, type Style } from "@/registry/_legacy-styles"
+import * as React from "react"
+import { Avatar as AvatarPrimitive } from "radix-ui"
 
-export const revalidate = false
+import { cn } from "@/examples/base/lib/utils"
 
-function getStyleFromSlug(slug: string[] | undefined, fallbackStyle: string) {
-  // Detect base from URL: /docs/components/base/... or /docs/components/radix/...
-  if (slug && slug[0] === "components" && slug[1]) {
-    if (slug[1] === "base") {
-      return "base-nova"
-    }
-    if (slug[1] === "radix") {
-      return "new-york-v4"
-    }
-  }
-  return fallbackStyle
-}
-
-export async function GET(
-  _req: NextRequest,
-  { params }: { params: Promise<{ slug?: string[] }> }
-) {
-  const [{ slug }, activeStyle] = await Promise.all([params, getActiveStyle()])
-
-  const page = source.getPage(slug)
-
-  if (!page) {
-    notFound()
-  }
-
-  const effectiveStyle = getStyleFromSlug(slug, activeStyle.name)
-
-  const processedContent = processMdxForLLMs(
-    await page.data.getText("raw"),
-    effectiveStyle as Style["name"]
+function Avatar({
+  className,
+  size = "default",
+  ...props
+}: React.ComponentProps<typeof AvatarPrimitive.Root> & {
+  size?: "default" | "sm" | "lg"
+}) {
+  return (
+    <AvatarPrimitive.Root
+      data-slot="avatar"
+      data-size={size}
+      className={cn(
+        "cn-avatar group/avatar relative flex shrink-0 select-none after:absolute after:inset-0 after:border after:border-border after:mix-blend-darken dark:after:mix-blend-lighten",
+        className
+      )}
+      {...props}
+    />
   )
-
-  return new NextResponse(processedContent, {
-    headers: {
-      "Content-Type": "text/markdown; charset=utf-8",
-    },
-  })
 }
 
-export function generateStaticParams() {
-  return source.generateParams()
+function AvatarImage({
+  className,
+  ...props
+}: React.ComponentProps<typeof AvatarPrimitive.Image>) {
+  return (
+    <AvatarPrimitive.Image
+      data-slot="avatar-image"
+      className={cn(
+        "cn-avatar-image aspect-square size-full object-cover",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function AvatarFallback({
+  className,
+  ...props
+}: React.ComponentProps<typeof AvatarPrimitive.Fallback>) {
+  return (
+    <AvatarPrimitive.Fallback
+      data-slot="avatar-fallback"
+      className={cn(
+        "cn-avatar-fallback flex size-full items-center justify-center text-sm group-data-[size=sm]/avatar:text-xs",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function AvatarBadge({ className, ...props }: React.ComponentProps<"span">) {
+  return (
+    <span
+      data-slot="avatar-badge"
+      className={cn(
+        "cn-avatar-badge absolute right-0 bottom-0 z-10 inline-flex items-center justify-center rounded-full bg-blend-color ring-2 select-none",
+        "group-data-[size=sm]/avatar:size-2 group-data-[size=sm]/avatar:[&>svg]:hidden",
+        "group-data-[size=default]/avatar:size-2.5 group-data-[size=default]/avatar:[&>svg]:size-2",
+        "group-data-[size=lg]/avatar:size-3 group-data-[size=lg]/avatar:[&>svg]:size-2",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function AvatarGroup({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="avatar-group"
+      className={cn(
+        "cn-avatar-group group/avatar-group flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+function AvatarGroupCount({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="avatar-group-count"
+      className={cn(
+        "cn-avatar-group-count relative flex shrink-0 items-center justify-center ring-2 ring-background",
+        "",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+export {
+  Avatar,
+  AvatarImage,
+  AvatarFallback,
+  AvatarGroup,
+  AvatarGroupCount,
+  AvatarBadge,
 }
