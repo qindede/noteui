@@ -215,9 +215,12 @@ export default function SidebarInsetExample() {
           </div>
         </div>
 
-        {/* 第二行：聊天区域 */}
-        <div className="flex">
+        {/* 第二行：聊天标题区 */}
+        <div className="flex mt-2">
           {/* 窗口操作图标 */}
+          <div className="text-sm text-foreground flex items-center gap-2 px-2">
+            解释 Shor算法是如何威胁到RSA 加密
+          </div>
           <div className="h-8 w-8 flex items-center justify-center rounded-md hover:bg-muted cursor-pointer">
             <IconPlaceholder
               lucide="HistoryIcon"
@@ -244,7 +247,7 @@ export default function SidebarInsetExample() {
         <div className="flex-1 overflow-auto p-4 pl-2.5">
           <div className="flex flex-col gap-4 justify-end min-h-full">
             {/* Agent: 欢迎消息 */}
-            <div className="text-sm text-foreground leading-relaxed">
+            <div className="text-sm text-muted-foreground leading-relaxed">
               已连接本地笔记库 (共 142 篇文档)。你可以向我提问，或者让我基于现有资料帮你续写当前笔记。
             </div>
 
