@@ -143,11 +143,11 @@ export default function SidebarInsetExample() {
           </div>
         </SidebarFooter>
       </Sidebar>
-      <SidebarInset className="h-svh overflow-hidden">
+      <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
           <SidebarTrigger className="-ml-1" />
         </header>
-        <div className="flex-1 overflow-auto p-4">
+        <div className="flex flex-1 flex-col gap-4 p-4">
           <div className="mx-auto w-full max-w-3xl">
             <h1 className="text-3xl font-bold tracking-tight">开始使用</h1>
             <p className="mt-4 text-lg text-muted-foreground">
