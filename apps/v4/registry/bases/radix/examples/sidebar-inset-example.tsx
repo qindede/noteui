@@ -153,10 +153,10 @@ export default function SidebarInsetExample() {
         </ResizablePanel>
         <ResizableHandle
           withHandle
-          className="!bg-transparent after:!bg-transparent data-[separator=active]:!bg-transparent data-[separator=active]:after:!bg-transparent focus-visible:!ring-0 [&>div]:hidden"
+          className="!bg-sidebar after:!bg-sidebar focus-visible:!ring-0 data-[separator=active]:!bg-sidebar data-[separator=active]:after:!bg-sidebar [&>div]:hidden"
         />
-        <ResizablePanel minSize="20%">
-          <SidebarInset className="my-2 mr-0 h-full min-h-0 overflow-hidden rounded-none bg-transparent shadow-none">
+        <ResizablePanel minSize="20%" className="bg-sidebar py-2 pr-0">
+          <SidebarInset className="h-full min-h-0 overflow-hidden rounded-none bg-transparent shadow-none">
             <header className="sticky top-0 z-10 -mb-[1px] flex h-12 shrink-0 items-center gap-1 px-2">
               <SidebarTrigger className="mr-1 h-10 w-10" />
               <div className="relative z-10 flex h-12 max-w-60 min-w-30 items-center gap-2 rounded-t-lg border-x border-t bg-background px-3 text-sm font-medium">
@@ -263,7 +263,7 @@ export default function SidebarInsetExample() {
         </ResizablePanel>
         <ResizableHandle
           withHandle
-          className="!bg-transparent after:!bg-transparent data-[separator=active]:!bg-transparent data-[separator=active]:after:!bg-transparent focus-visible:!ring-0 [&>div]:hidden"
+          className="!bg-sidebar after:!bg-transparent focus-visible:!ring-0 data-[separator=active]:!bg-transparent data-[separator=active]:after:!bg-transparent [&>div]:hidden"
         />
         <ResizablePanel defaultSize={360} minSize={360}>
           <Sidebar
