@@ -144,7 +144,7 @@ export default function SidebarInsetExample() {
           </div>
         </SidebarFooter>
       </Sidebar>
-      <SidebarInset className="min-h-0 overflow-hidden shadow-none rounded-none bg-transparent peer-data-[variant=inset]:my-2 peer-data-[variant=inset]:mr-0">
+      <SidebarInset className="min-h-0 overflow-hidden shadow-none rounded-none bg-transparent my-2 mr-0">
         <header className="sticky top-0 z-10 flex h-12 shrink-0 items-center gap-1 px-2 -mb-[1px]">
           <SidebarTrigger className="h-10 w-10 mr-1" />
           <div className="flex items-center h-12 px-3 text-sm rounded-t-lg bg-background border-x border-t font-medium gap-2 relative z-10 min-w-30 max-w-60">
