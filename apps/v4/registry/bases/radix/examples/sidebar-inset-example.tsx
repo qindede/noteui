@@ -367,6 +367,16 @@ export default function SidebarInsetExample() {
 
         {/* Chat Input */}
         <div className="p-4">
+          <div className="flex items-center justify-between text-sm text-muted-foreground bg-muted px-3 pt-2 pb-4 -mb-2 rounded-t-md">@文档示例.md
+            <IconPlaceholder
+              lucide="XIcon"
+              tabler="IconX"
+              hugeicons="Cancel01Icon"
+              phosphor="XIcon"
+              remixicon="RiCloseLine"
+              className="size-4"
+            />
+          </div>
           <InputGroup className="bg-background">
             <InputGroupTextarea placeholder="Ask, Search or Chat..." />
             <InputGroupAddon align="block-end">
