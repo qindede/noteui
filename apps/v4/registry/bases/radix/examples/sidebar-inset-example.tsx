@@ -45,8 +45,11 @@ import {
   SidebarTrigger,
 } from "@/registry/bases/radix/ui/sidebar"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
+import { SettingsDialog } from "@/registry/bases/radix/blocks/sidebar-13/components/settings-dialog"
 
 export default function SidebarInsetExample() {
+  const [settingsOpen, setSettingsOpen] = React.useState(false)
+
   const data = {
     tree: [
       [
@@ -283,16 +286,18 @@ export default function SidebarInsetExample() {
                   className="size-4"
                 />
               </div>
-              <div className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-md hover:bg-muted">
-                <IconPlaceholder
-                  lucide="SettingsIcon"
-                  tabler="IconSettings"
-                  hugeicons="Settings01Icon"
-                  phosphor="SettingsIcon"
-                  remixicon="RiSettingsLine"
-                  className="size-4"
-                />
-              </div>
+              <SettingsDialog open={settingsOpen} onOpenChange={setSettingsOpen}>
+                <button className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-md hover:bg-muted">
+                  <IconPlaceholder
+                    lucide="SettingsIcon"
+                    tabler="IconSettings"
+                    hugeicons="Settings01Icon"
+                    phosphor="SettingsIcon"
+                    remixicon="RiSettingsLine"
+                    className="size-4"
+                  />
+                </button>
+              </SettingsDialog>
               <div className="flex h-10 w-10 cursor-pointer items-center justify-center hover:bg-muted">
                 <IconPlaceholder
                   lucide="MinusIcon"
