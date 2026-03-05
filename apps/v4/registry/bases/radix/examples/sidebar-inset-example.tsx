@@ -145,22 +145,20 @@ export default function SidebarInsetExample() {
         </SidebarFooter>
       </Sidebar>
       <SidebarInset className="min-h-0 overflow-hidden">
-        <header className="sticky top-0 z-10 flex h-12 shrink-0 items-center gap-2 border-b bg-background px-4">
-          <SidebarTrigger className="-ml-1" />
-          <div className="flex items-center gap-1">
-            <button className="group inline-flex h-8 max-w-[200px] items-center gap-2 rounded-md bg-muted px-3 text-sm font-medium transition-colors hover:bg-muted/80">
-              <span className="truncate">文档示例.md</span>
-              <span className="ml-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-sm transition-opacity hover:bg-background">
+        <header className="sticky top-0 z-10 flex h-12 shrink-0 items-center gap-2 border-b bg-muted/50 px-4">
+          <SidebarTrigger className="-ml-2 h-10 w-10 p-0" />
+          <div className="flex items-center self-end h-12 px-3 text-sm rounded-t-lg bg-background border-x border-t font-medium gap-2 relative z-10 min-w-[120px] max-w-[200px]">
+              <span className="truncate flex-1">文档示例.md</span>
+              <button className="flex items-center justify-center size-6 rounded-sm hover:bg-muted transition-colors shrink-0">
                 <IconPlaceholder
                   lucide="XIcon"
                   tabler="IconX"
                   hugeicons="Cancel01Icon"
                   phosphor="XIcon"
                   remixicon="RiCloseLine"
-                  className="size-3"
+                  className="size-4"
                 />
-              </span>
-            </button>
+              </button>
           </div>
         </header>
         <ScrollArea className="min-h-0 flex-1 overscroll-y-contain">
