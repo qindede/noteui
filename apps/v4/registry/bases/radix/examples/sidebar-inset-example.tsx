@@ -266,7 +266,7 @@ export default function SidebarInsetExample() {
         </ResizablePanel>
         <ResizableHandle
           withHandle
-          className="!bg-sidebar after:!bg-transparent focus-visible:!ring-0 data-[separator=active]:!bg-transparent data-[separator=active]:after:!bg-transparent [&>div]:hidden"
+          className="!bg-sidebar after:!bg-transparent focus-visible:!ring-0 data-[separator=active]:!bg-sidebar data-[separator=active]:after:!bg-transparent [&>div]:hidden"
         />
         <ResizablePanel defaultSize={360} minSize={360}>
           <Sidebar
