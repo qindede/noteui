@@ -79,7 +79,7 @@ export default function SidebarInsetExample() {
   return (
     <SidebarProvider className="h-svh overflow-hidden">
       <ResizablePanelGroup orientation="horizontal" className="min-h-0 flex-1">
-        <ResizablePanel defaultSize={240} minSize={240} maxSize={340}>
+        <ResizablePanel defaultSize={240} minSize={240} maxSize={360}>
           <Sidebar collapsible="none" className="h-full w-full">
             <SidebarHeader>
               <div className="flex items-center justify-between rounded-sm p-2 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
@@ -153,9 +153,9 @@ export default function SidebarInsetExample() {
         </ResizablePanel>
         <ResizableHandle
           withHandle
-          className="!bg-transparent after:!bg-transparent focus-visible:!ring-0 data-[separator=active]:!bg-transparent data-[separator=active]:after:!bg-transparent [&>div]:hidden"
+          className="!bg-transparent after:!bg-transparent data-[separator=active]:!bg-transparent data-[separator=active]:after:!bg-transparent focus-visible:!ring-0 [&>div]:hidden"
         />
-        <ResizablePanel defaultSize="45%" minSize="30%">
+        <ResizablePanel minSize="20%">
           <SidebarInset className="my-2 mr-0 h-full min-h-0 overflow-hidden rounded-none bg-transparent shadow-none">
             <header className="sticky top-0 z-10 -mb-[1px] flex h-12 shrink-0 items-center gap-1 px-2">
               <SidebarTrigger className="mr-1 h-10 w-10" />
@@ -263,9 +263,9 @@ export default function SidebarInsetExample() {
         </ResizablePanel>
         <ResizableHandle
           withHandle
-          className="!bg-transparent after:!bg-transparent focus-visible:!ring-0 data-[separator=active]:!bg-transparent data-[separator=active]:after:!bg-transparent [&>div]:hidden"
+          className="!bg-transparent after:!bg-transparent data-[separator=active]:!bg-transparent data-[separator=active]:after:!bg-transparent focus-visible:!ring-0 [&>div]:hidden"
         />
-        <ResizablePanel defaultSize="35%" minSize="25%">
+        <ResizablePanel defaultSize={360} minSize={360}>
           <Sidebar
             collapsible="none"
             className="h-full w-full flex-col lg:flex"
