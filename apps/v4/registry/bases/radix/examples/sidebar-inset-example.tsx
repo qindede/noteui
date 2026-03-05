@@ -144,10 +144,10 @@ export default function SidebarInsetExample() {
           </div>
         </SidebarFooter>
       </Sidebar>
-      <SidebarInset className="min-h-0 overflow-hidden">
-        <header className="sticky top-0 z-10 flex h-12 shrink-0 items-center border-b bg-muted/10 gap-1">
-          <SidebarTrigger className="h-10 w-10 ml-2 mr-1" />
-          <div className="flex items-center h-12 px-3 text-sm rounded-t-lg bg-background border-x border-t -mb-[1px] font-medium gap-2 relative z-10 min-w-[120px] max-w-[200px]">
+      <SidebarInset className="min-h-0 overflow-hidden shadow-none rounded-none bg-transparent peer-data-[variant=inset]:my-2 peer-data-[variant=inset]:mr-0">
+        <header className="sticky top-0 z-10 flex h-12 shrink-0 items-center gap-1 px-2 -mb-[1px]">
+          <SidebarTrigger className="h-10 w-10 mr-1" />
+          <div className="flex items-center h-12 px-3 text-sm rounded-t-lg bg-background border-x border-t font-medium gap-2 relative z-10 min-w-30 max-w-60">
             <span className="truncate flex-1">文档示例.md</span>
             <button className="flex items-center justify-center size-6 rounded-sm hover:bg-muted transition-colors shrink-0">
               <IconPlaceholder
@@ -162,7 +162,7 @@ export default function SidebarInsetExample() {
           </div>
           <div className="flex items-center self-center h-10 px-3 text-sm hover:rounded-lg hover:bg-muted gap-2 relative z-10 min-w-30 max-w-60">
             <span className="truncate flex-1">新建笔记.md</span>
-            <button className="flex items-center justify-center size-6 rounded-sm transition-colors shrink-0">
+            <button className="flex items-center justify-center size-6 rounded-sm transition-colors shrink-0 opacity-0 hover:opacity-100">
               <IconPlaceholder
                 lucide="XIcon"
                 tabler="IconX"
@@ -174,7 +174,7 @@ export default function SidebarInsetExample() {
             </button>
           </div>
         </header>
-        <ScrollArea className="min-h-0 flex-1 overscroll-y-contain">
+        <ScrollArea className="min-h-0 flex-1 overscroll-y-contain border rounded-xl bg-background">
           <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 p-4">
             <h1 className="text-3xl font-bold tracking-tight">开始使用</h1>
             <p className="mt-4 text-lg text-muted-foreground">
