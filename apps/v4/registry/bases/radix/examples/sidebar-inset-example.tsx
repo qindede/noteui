@@ -160,9 +160,9 @@ export default function SidebarInsetExample() {
               />
             </button>
           </div>
-          <div className="flex items-center self-center h-10 px-3 text-sm hover:rounded-lg hover:bg-muted gap-2 relative z-10 min-w-30 max-w-60">
+          <div className="flex items-center self-center h-10 px-3 text-sm hover:rounded-lg hover:bg-muted gap-2 relative z-10 min-w-30 max-w-60 group">
             <span className="truncate flex-1">新建笔记.md</span>
-            <button className="flex items-center justify-center size-6 rounded-sm transition-colors shrink-0 opacity-0 hover:opacity-100">
+            <button className="flex items-center justify-center size-6 rounded-sm transition-colors shrink-0 opacity-0 text-transparent group-hover:text-muted-foreground group-hover:opacity-100 hover:text-accent-foreground">
               <IconPlaceholder
                 lucide="XIcon"
                 tabler="IconX"
