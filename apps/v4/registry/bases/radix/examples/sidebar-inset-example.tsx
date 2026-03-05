@@ -297,7 +297,7 @@ export default function SidebarInsetExample() {
         </div>
 
         {/* 第二行：聊天标题区 */}
-        <div className="flex mt-2 pl-2.5 pr-3 items-center justify-between">
+        <div className="flex mt-2 p-4 items-center justify-between">
           {/* 窗口操作图标 */}
           <div className="h-8 w-8 flex items-center justify-center rounded-md hover:bg-muted cursor-pointer">
             <IconPlaceholder
@@ -323,7 +323,7 @@ export default function SidebarInsetExample() {
         </div>
 
         {/* 聊天区 */}
-        <div className="flex-1 overflow-auto p-4 pl-2.5">
+        <div className="flex-1 overflow-auto p-4">
           <div className="flex flex-col gap-4 justify-end min-h-full">
             {/* Agent: 欢迎消息 */}
             <div className="text-sm text-muted-foreground leading-relaxed">
@@ -366,7 +366,7 @@ export default function SidebarInsetExample() {
         </div>
 
         {/* Chat Input */}
-        <div className="p-4 pl-2.5">
+        <div className="p-4">
           <InputGroup className="bg-background">
             <InputGroupTextarea placeholder="Ask, Search or Chat..." />
             <InputGroupAddon align="block-end">
