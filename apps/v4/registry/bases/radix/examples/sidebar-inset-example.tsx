@@ -153,7 +153,7 @@ export default function SidebarInsetExample() {
         </ResizablePanel>
         <ResizableHandle
           withHandle
-          className="bg-transparent after:bg-transparent [&>div]:hidden"
+          className="!bg-transparent after:!bg-transparent focus-visible:!ring-0 data-[separator=active]:!bg-transparent data-[separator=active]:after:!bg-transparent [&>div]:hidden"
         />
         <ResizablePanel defaultSize="45%" minSize="30%">
           <SidebarInset className="my-2 mr-0 h-full min-h-0 overflow-hidden rounded-none bg-transparent shadow-none">
@@ -263,7 +263,7 @@ export default function SidebarInsetExample() {
         </ResizablePanel>
         <ResizableHandle
           withHandle
-          className="bg-transparent after:bg-transparent [&>div]:hidden"
+          className="!bg-transparent after:!bg-transparent focus-visible:!ring-0 data-[separator=active]:!bg-transparent data-[separator=active]:after:!bg-transparent [&>div]:hidden"
         />
         <ResizablePanel defaultSize="35%" minSize="25%">
           <Sidebar
