@@ -179,7 +179,7 @@ export default function SidebarInsetExample() {
           className="!bg-sidebar after:!bg-sidebar focus-visible:!ring-0 data-[separator=active]:!bg-sidebar data-[separator=active]:after:!bg-sidebar [&>div]:hidden"
         />
         <ResizablePanel minSize="20%" className="bg-sidebar py-2 pr-0">
-          <SidebarInset className="h-full min-h-0 overflow-hidden rounded-none bg-transparent shadow-none">
+          <div className="relative flex w-full flex-1 flex-col h-full min-h-0 overflow-hidden rounded-none bg-transparent shadow-none">
             <header className="sticky top-0 z-10 -mb-[1px] flex h-12 shrink-0 items-center gap-1 px-2">
               <SidebarTrigger
                 className="mr-1 h-10 w-10"
@@ -285,7 +285,66 @@ export default function SidebarInsetExample() {
                 </div>
               </div>
             </ScrollArea>
-          </SidebarInset>
+            {/* 应用窗口操作 */}
+            <div className="flex items-center justify-end">
+              <div className="flex items-center gap-2 px-2 text-xs text-muted-foreground">
+                最后保存：刚刚
+                <IconPlaceholder
+                  lucide="CloudUploadIcon"
+                  tabler="IconSettings"
+                  hugeicons="Settings01Icon"
+                  phosphor="SettingsIcon"
+                  remixicon="RiSettingsLine"
+                  className="size-4"
+                />
+              </div>
+              <SettingsDialog
+                open={settingsOpen}
+                onOpenChange={setSettingsOpen}
+              >
+                <button className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-md hover:bg-muted">
+                  <IconPlaceholder
+                    lucide="SettingsIcon"
+                    tabler="IconSettings"
+                    hugeicons="Settings01Icon"
+                    phosphor="SettingsIcon"
+                    remixicon="RiSettingsLine"
+                    className="size-4"
+                  />
+                </button>
+              </SettingsDialog>
+              <div className="flex h-10 w-10 cursor-pointer items-center justify-center hover:bg-muted">
+                <IconPlaceholder
+                  lucide="MinusIcon"
+                  tabler="IconMinus"
+                  hugeicons="MinusSignIcon"
+                  phosphor="MinusIcon"
+                  remixicon="RiSubtractLine"
+                  className="size-4"
+                />
+              </div>
+              <div className="flex h-10 w-10 cursor-pointer items-center justify-center hover:bg-muted">
+                <IconPlaceholder
+                  lucide="SquareIcon"
+                  tabler="IconSquare"
+                  hugeicons="SquareIcon"
+                  phosphor="SquareIcon"
+                  remixicon="RiSquareLine"
+                  className="size-4"
+                />
+              </div>
+              <div className="flex h-10 w-10 cursor-pointer items-center justify-center hover:bg-destructive hover:text-accent">
+                <IconPlaceholder
+                  lucide="XIcon"
+                  tabler="IconX"
+                  hugeicons="Cancel01Icon"
+                  phosphor="XIcon"
+                  remixicon="RiCloseLine"
+                  className="size-4"
+                />
+              </div>
+            </div>
+          </div>
         </ResizablePanel>
         <ResizableHandle
           withHandle
