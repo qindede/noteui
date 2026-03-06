@@ -176,14 +176,18 @@ export default function SidebarInsetExample() {
         </ResizablePanel>
         <ResizableHandle
           withHandle
-          className="!bg-sidebar after:!bg-sidebar focus-visible:!ring-0 data-[separator=active]:!bg-sidebar data-[separator=active]:after:!bg-sidebar [&>div]:hidden"
+          className="relative mt-15 mb-5 !bg-sidebar after:!bg-sidebar focus-visible:!ring-0 data-[separator=active]:!bg-sidebar data-[separator=active]:after:!bg-sidebar [&>div]:hidden before:absolute before:inset-0 before:-top-15 before:-bottom-5 before:bg-sidebar before:-z-10"
         />
         <ResizablePanel minSize="20%" className="bg-sidebar pr-0 pb-2">
           <div className="relative flex w-full flex-1 flex-col h-full">
             <div className="flex justify-between">
-              <header className="sticky top-0 z-10 -mb-[1px] flex h-12 shrink-0 items-center gap-1 px-2 mt-2">
+              <header className="sticky top-0 z-10 -mb-[1px] flex h-12 shrink-0 items-center gap-1 mt-2">
                 <SidebarTrigger
-                  className="mr-1 h-10 w-10"
+                  className="h-10 w-10"
+                  onClick={handleSidebarTriggerClick}
+                />
+                <SidebarTrigger
+                  className="h-10 w-10"
                   onClick={handleSidebarTriggerClick}
                 />
                 <div className="relative z-10 flex h-12 max-w-60 min-w-30 items-center gap-2 rounded-t-lg border-x border-t bg-background px-3 text-sm font-medium">
