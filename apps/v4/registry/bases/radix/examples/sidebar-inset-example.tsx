@@ -408,16 +408,16 @@ export default function SidebarInsetExample() {
                       基于本地库，解释 Shor算法是如何威胁到RSA 加密的？
                     </div>
 
-                    <div className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-2">
                       {/* Agent: 知识库搜索提示 */}
-                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
                         <IconPlaceholder
                           lucide="SearchIcon"
                           tabler="IconSearch"
                           hugeicons="Search01Icon"
                           phosphor="MagnifyingGlassIcon"
                           remixicon="RiSearchLine"
-                          className="size-3"
+                          className="size-4"
                         />
                         <span>找到6篇知识库资料</span>
                         <IconPlaceholder
@@ -426,7 +426,7 @@ export default function SidebarInsetExample() {
                           hugeicons="ArrowDown01Icon"
                           phosphor="CaretDownIcon"
                           remixicon="RiArrowDownSLine"
-                          className="size-3"
+                          className="size-4"
                         />
                       </div>
 
@@ -435,6 +435,40 @@ export default function SidebarInsetExample() {
                         RSA加密的安全性基于大整数质因数分解的经典计算困难性[1]。
                         传统计算机利用最快的通用数域筛法（GNFS）也需要耗费数百万年的时间才能破解2048位的RSA密钥。然而，Shor算法利用了量子计算的特性。它将因子分解问题转化为了求模指数函数周期的寻找问题[2]。
                         通过量子傅里叶变换，该算法可以在多项式时间内找到周期，从而快速计算出质因数。这意味着一旦拥有足够规模和容错能力的量子计算机问世，现有的RSA加密体系将被瞬间瓦解。
+                      </div>
+                      <div className="flex gap-3 text-muted-foreground">
+                        <IconPlaceholder
+                          lucide="BetweenHorizontalEnd"
+                          tabler="IconChevronDown"
+                          hugeicons="ArrowDown01Icon"
+                          phosphor="CaretDownIcon"
+                          remixicon="RiArrowDownSLine"
+                          className="size-4"
+                        />
+                        <IconPlaceholder
+                          lucide="CopyIcon"
+                          tabler="IconChevronDown"
+                          hugeicons="ArrowDown01Icon"
+                          phosphor="CaretDownIcon"
+                          remixicon="RiArrowDownSLine"
+                          className="size-4"
+                        />
+                        <IconPlaceholder
+                          lucide="RefreshCwIcon"
+                          tabler="IconChevronDown"
+                          hugeicons="ArrowDown01Icon"
+                          phosphor="CaretDownIcon"
+                          remixicon="RiArrowDownSLine"
+                          className="size-4"
+                        />
+                        <IconPlaceholder
+                          lucide="Trash2Icon"
+                          tabler="IconChevronDown"
+                          hugeicons="ArrowDown01Icon"
+                          phosphor="CaretDownIcon"
+                          remixicon="RiArrowDownSLine"
+                          className="size-4 text-destructive"
+                        />
                       </div>
                     </div>
                   </div>
