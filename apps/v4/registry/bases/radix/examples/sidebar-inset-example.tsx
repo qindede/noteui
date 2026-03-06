@@ -274,13 +274,9 @@ export default function SidebarInsetExample() {
               </div>
             </div>
 
-            <div className="flex justify-between min-h-0">
-              <ResizablePanelGroup orientation="horizontal" className="min-h-0 flex-1">
-                <ResizablePanel
-                  defaultSize="40%"
-                  minSize="40%"
-                >
-                  <ScrollArea className="flex-1 overscroll-y-contain rounded-xl border bg-background">
+              <ResizablePanelGroup orientation="horizontal" className="flex justify-between flex-1 pr-4">
+                <ResizablePanel minSize="40%">
+                  <ScrollArea className="h-full overscroll-y-contain rounded-xl border bg-background">
                     <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 p-4">
                       <h1 className="text-3xl font-bold tracking-tight">开始使用</h1>
                       <p className="mt-4 text-lg text-muted-foreground">
@@ -356,8 +352,7 @@ export default function SidebarInsetExample() {
                 </ResizablePanel>
                 <ResizableHandle withHandle className="!bg-sidebar after:!bg-transparent focus-visible:!ring-0 data-[separator=active]:!bg-sidebar data-[separator=active]:after:!bg-transparent [&>div]:hidden"
                 />
-                <ResizablePanel defaultSize="30%" minSize="30%" collapsible collapsedSize={0}>
-                  <div className="flex flex-col h-full w-full">
+                <ResizablePanel defaultSize={400} minSize={400} collapsible collapsedSize={0}  className="flex flex-col h-full w-full">
                     {/* 聊天标题区 */}
                     <div className="flex items-center justify-between p-4 pt-0">
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -501,11 +496,8 @@ export default function SidebarInsetExample() {
                         </InputGroupAddon>
                       </InputGroup>
                     </div>
-
-                  </div>
                 </ResizablePanel>
               </ResizablePanelGroup>
-            </div>
           </div>
         </ResizablePanel>
       </ResizablePanelGroup>
