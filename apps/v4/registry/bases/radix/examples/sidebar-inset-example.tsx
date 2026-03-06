@@ -274,8 +274,8 @@ export default function SidebarInsetExample() {
               </div>
             </div>
 
-              <ResizablePanelGroup orientation="horizontal" className="flex justify-between flex-1 pr-4">
-                <ResizablePanel minSize="40%">
+              <ResizablePanelGroup orientation="horizontal" className="flex justify-between flex-1">
+                <ResizablePanel minSize="40%" className="mr-0">
                   <ScrollArea className="h-full overscroll-y-contain rounded-xl border bg-background">
                     <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 p-4">
                       <h1 className="text-3xl font-bold tracking-tight">开始使用</h1>
@@ -350,11 +350,11 @@ export default function SidebarInsetExample() {
                     </div>
                   </ScrollArea>
                 </ResizablePanel>
-                <ResizableHandle withHandle className="!bg-sidebar after:!bg-transparent focus-visible:!ring-0 data-[separator=active]:!bg-sidebar data-[separator=active]:after:!bg-transparent [&>div]:hidden"
+                <ResizableHandle withHandle className="mr-2 !bg-sidebar after:!bg-transparent focus-visible:!ring-0 data-[separator=active]:!bg-sidebar data-[separator=active]:after:!bg-transparent [&>div]:hidden"
                 />
                 <ResizablePanel defaultSize={400} minSize={400} collapsible collapsedSize={0}  className="flex flex-col h-full w-full">
                     {/* 聊天标题区 */}
-                    <div className="flex items-center justify-between p-4 pt-0">
+                    <div className="flex items-center justify-between p-4 pl-2 pt-0">
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
                         解释 Shor算法是如何威胁到RSA 加密
                         <IconPlaceholder
@@ -380,7 +380,7 @@ export default function SidebarInsetExample() {
                     </div>
 
                     {/* 聊天区 */}
-                    <div className="flex-1 overflow-auto p-4">
+                    <div className="flex-1 overflow-auto p-4 pl-2">
                       <div className="flex min-h-full flex-col justify-end gap-4">
                         {/* Agent: 欢迎消息 */}
                         <div className="text-sm leading-relaxed text-muted-foreground">
@@ -426,7 +426,7 @@ export default function SidebarInsetExample() {
                     </div>
 
                     {/* Chat Input */}
-                    <div className="p-4 pb-2">
+                    <div className="p-4 pb-2 pl-2">
                       <div className="-mb-2 flex items-center justify-between rounded-t-md bg-muted px-3 pt-2 pb-4 text-sm text-muted-foreground">
                         @文档示例.md
                         <button className="hover:text-foreground">
