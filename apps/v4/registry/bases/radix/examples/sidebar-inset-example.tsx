@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import type { PanelImperativeHandle } from "react-resizable-panels"
+import type { GroupImperativeHandle } from "react-resizable-panels"
 
 import { cn } from "@/lib/utils"
 import {
@@ -50,18 +50,54 @@ import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
 
 export default function SidebarInsetExample() {
   const [settingsOpen, setSettingsOpen] = React.useState(false)
-  const leftPanelRef = React.useRef<PanelImperativeHandle | null>(null)
+  const [isLeftCollapsed, setIsLeftCollapsed] = React.useState(false)
+  const panelGroupRef = React.useRef<GroupImperativeHandle | null>(null)
+  const lastExpandedLeftSizeRef = React.useRef(20)
 
   const handleSidebarTriggerClick = React.useCallback(() => {
-    if (!leftPanelRef.current) return
+    const group = panelGroupRef.current
+    if (!group) return
 
-    if (leftPanelRef.current.isCollapsed()) {
-      leftPanelRef.current.expand()
+    const layout = group.getLayout()
+    const left = layout.left ?? lastExpandedLeftSizeRef.current
+    const middle = layout.middle ?? 0
+
+    if (isLeftCollapsed) {
+      const restoreLeft = Math.max(lastExpandedLeftSizeRef.current, 1)
+      const nextLeft = Math.min(restoreLeft, middle)
+
+      group.setLayout({
+        ...layout,
+        left: nextLeft,
+        middle: middle - nextLeft,
+      })
+
+      setIsLeftCollapsed(false)
       return
     }
 
-    leftPanelRef.current.collapse()
-  }, [])
+    if (left > 0) {
+      lastExpandedLeftSizeRef.current = left
+    }
+
+    group.setLayout({
+      ...layout,
+      left: 0,
+      middle: middle + left,
+    })
+
+    setIsLeftCollapsed(true)
+  }, [isLeftCollapsed])
+
+  const handleLayoutChange = React.useCallback(
+    (layout: Record<string, number>) => {
+      const left = layout.left
+      if (!isLeftCollapsed && typeof left === "number" && left > 0) {
+        lastExpandedLeftSizeRef.current = left
+      }
+    },
+    [isLeftCollapsed]
+  )
 
   const data = {
     tree: [
@@ -94,14 +130,17 @@ export default function SidebarInsetExample() {
 
   return (
     <SidebarProvider className="h-svh overflow-hidden">
-      <ResizablePanelGroup orientation="horizontal" className="min-h-0 flex-1">
+      <ResizablePanelGroup
+        orientation="horizontal"
+        className="min-h-0 flex-1"
+        groupRef={panelGroupRef}
+        onLayoutChange={handleLayoutChange}
+      >
         <ResizablePanel
-          panelRef={leftPanelRef}
+          id="left"
           defaultSize={240}
-          minSize={240}
-          maxSize={360}
-          collapsible
-          collapsedSize={0}
+          minSize={isLeftCollapsed ? 0 : 240}
+          maxSize={isLeftCollapsed ? 0 : 360}
         >
           <Sidebar collapsible="none" className="h-full w-full">
             <SidebarHeader>
@@ -178,7 +217,11 @@ export default function SidebarInsetExample() {
           withHandle
           className="!bg-sidebar after:!bg-sidebar focus-visible:!ring-0 data-[separator=active]:!bg-sidebar data-[separator=active]:after:!bg-sidebar [&>div]:hidden"
         />
-        <ResizablePanel minSize="20%" className="bg-sidebar py-2 pr-0">
+        <ResizablePanel
+          id="middle"
+          minSize="20%"
+          className="bg-sidebar py-2 pr-0"
+        >
           <SidebarInset className="h-full min-h-0 overflow-hidden rounded-none bg-transparent shadow-none">
             <header className="sticky top-0 z-10 -mb-[1px] flex h-12 shrink-0 items-center gap-1 px-2">
               <SidebarTrigger
@@ -291,7 +334,7 @@ export default function SidebarInsetExample() {
           withHandle
           className="!bg-sidebar after:!bg-transparent focus-visible:!ring-0 data-[separator=active]:!bg-sidebar data-[separator=active]:after:!bg-transparent [&>div]:hidden"
         />
-        <ResizablePanel defaultSize={360} minSize={360}>
+        <ResizablePanel id="right" defaultSize={360} minSize={360}>
           <Sidebar
             collapsible="none"
             className="h-full w-full flex-col lg:flex"
