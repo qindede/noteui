@@ -52,7 +52,7 @@ export default function SidebarInsetExample() {
   const [settingsOpen, setSettingsOpen] = React.useState(false)
   const leftPanelRef = React.useRef<PanelImperativeHandle | null>(null)
 
-  const handleSidebarTriggerClick = React.useCallback(() => {
+  const handleLeftSidebarTriggerClick = React.useCallback(() => {
     if (!leftPanelRef.current) return
 
     if (leftPanelRef.current.isCollapsed()) {
@@ -61,6 +61,19 @@ export default function SidebarInsetExample() {
     }
 
     leftPanelRef.current.collapse()
+  }, [])
+
+  const rightPanelRef = React.useRef<PanelImperativeHandle | null>(null)
+
+  const handleRightSidebarTriggerClick = React.useCallback(() => {
+    if (!rightPanelRef.current) return
+
+    if (rightPanelRef.current.isCollapsed()) {
+      rightPanelRef.current.expand()
+      return
+    }
+
+    rightPanelRef.current.collapse()
   }, [])
 
   const data = {
@@ -183,12 +196,12 @@ export default function SidebarInsetExample() {
             <div className="flex justify-between">
               <header className="sticky top-0 z-10 -mb-[1px] flex h-12 shrink-0 items-center gap-1 mt-2">
                 <SidebarTrigger
-                  className="h-10 w-10"
-                  onClick={handleSidebarTriggerClick}
+                  className="h-10 w-10 -mr-1"
+                  onClick={handleLeftSidebarTriggerClick}
                 />
                 <SidebarTrigger
                   className="h-10 w-10"
-                  onClick={handleSidebarTriggerClick}
+                  onClick={handleRightSidebarTriggerClick}
                 />
                 <div className="relative z-10 flex h-12 max-w-60 min-w-30 items-center gap-2 rounded-t-lg border-x border-t bg-background px-3 text-sm font-medium">
                   <span className="flex-1 truncate">文档示例.md</span>
@@ -356,7 +369,7 @@ export default function SidebarInsetExample() {
                 </ResizablePanel>
                 <ResizableHandle withHandle className="mr-2 !bg-sidebar after:!bg-transparent focus-visible:!ring-0 data-[separator=active]:!bg-sidebar data-[separator=active]:after:!bg-transparent [&>div]:hidden"
                 />
-                <ResizablePanel defaultSize={400} minSize={400} collapsible collapsedSize={0}  className="flex flex-col h-full w-full">
+                <ResizablePanel panelRef={rightPanelRef} collapsible collapsedSize={0} defaultSize={400} minSize={400} collapsible collapsedSize={0}  className="flex flex-col h-full w-full">
                     {/* 聊天标题区 */}
                     <div className="flex items-center justify-between p-4 pl-2 pt-0">
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
