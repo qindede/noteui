@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import type { PanelImperativeHandle } from "react-resizable-panels"
 
 import { cn } from "@/lib/utils"
 import {
@@ -18,6 +19,7 @@ import {
   InputGroupTextarea,
 } from "@/registry/bases/base/ui/input-group"
 import { Separator } from "@/registry/bases/base/ui/separator"
+import { SettingsDialog } from "@/registry/bases/radix/blocks/sidebar-13/components/settings-dialog"
 import {
   Collapsible,
   CollapsibleContent,
@@ -45,10 +47,21 @@ import {
   SidebarTrigger,
 } from "@/registry/bases/radix/ui/sidebar"
 import { IconPlaceholder } from "@/app/(create)/components/icon-placeholder"
-import { SettingsDialog } from "@/registry/bases/radix/blocks/sidebar-13/components/settings-dialog"
 
 export default function SidebarInsetExample() {
   const [settingsOpen, setSettingsOpen] = React.useState(false)
+  const leftPanelRef = React.useRef<PanelImperativeHandle | null>(null)
+
+  const handleSidebarTriggerClick = React.useCallback(() => {
+    if (!leftPanelRef.current) return
+
+    if (leftPanelRef.current.isCollapsed()) {
+      leftPanelRef.current.expand()
+      return
+    }
+
+    leftPanelRef.current.collapse()
+  }, [])
 
   const data = {
     tree: [
@@ -82,7 +95,14 @@ export default function SidebarInsetExample() {
   return (
     <SidebarProvider className="h-svh overflow-hidden">
       <ResizablePanelGroup orientation="horizontal" className="min-h-0 flex-1">
-        <ResizablePanel defaultSize={240} minSize={240} maxSize={360}>
+        <ResizablePanel
+          panelRef={leftPanelRef}
+          defaultSize={240}
+          minSize={240}
+          maxSize={360}
+          collapsible
+          collapsedSize={0}
+        >
           <Sidebar collapsible="none" className="h-full w-full">
             <SidebarHeader>
               <div className="flex items-center justify-between rounded-sm p-2 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
@@ -161,7 +181,10 @@ export default function SidebarInsetExample() {
         <ResizablePanel minSize="20%" className="bg-sidebar py-2 pr-0">
           <SidebarInset className="h-full min-h-0 overflow-hidden rounded-none bg-transparent shadow-none">
             <header className="sticky top-0 z-10 -mb-[1px] flex h-12 shrink-0 items-center gap-1 px-2">
-              <SidebarTrigger className="mr-1 h-10 w-10" />
+              <SidebarTrigger
+                className="mr-1 h-10 w-10"
+                onClick={handleSidebarTriggerClick}
+              />
               <div className="relative z-10 flex h-12 max-w-60 min-w-30 items-center gap-2 rounded-t-lg border-x border-t bg-background px-3 text-sm font-medium">
                 <span className="flex-1 truncate">文档示例.md</span>
                 <button className="flex size-6 shrink-0 items-center justify-center rounded-sm transition-colors hover:bg-muted">
@@ -286,7 +309,10 @@ export default function SidebarInsetExample() {
                   className="size-4"
                 />
               </div>
-              <SettingsDialog open={settingsOpen} onOpenChange={setSettingsOpen}>
+              <SettingsDialog
+                open={settingsOpen}
+                onOpenChange={setSettingsOpen}
+              >
                 <button className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-md hover:bg-muted">
                   <IconPlaceholder
                     lucide="SettingsIcon"
