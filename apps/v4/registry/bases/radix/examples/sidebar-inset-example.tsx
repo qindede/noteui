@@ -3,7 +3,6 @@
 import * as React from "react"
 import type { PanelImperativeHandle } from "react-resizable-panels"
 
-import { cn } from "@/lib/utils"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -38,7 +37,6 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarHeader,
-  SidebarInset,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -200,7 +198,7 @@ export default function SidebarInsetExample() {
                   onClick={handleLeftSidebarTriggerClick}
                 />
                 <SidebarTrigger
-                  className="h-10 w-10"
+                  className="h-10 w-10 [&_svg]:scale-x-[-1]"
                   onClick={handleRightSidebarTriggerClick}
                 />
                 <div className="relative z-10 flex h-12 max-w-60 min-w-30 items-center gap-2 rounded-t-lg border-x border-t bg-background px-3 text-sm font-medium">
