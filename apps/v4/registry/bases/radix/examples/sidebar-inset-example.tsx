@@ -187,7 +187,7 @@ export default function SidebarInsetExample() {
         </ResizablePanel>
         <ResizableHandle
           withHandle
-          className="relative mt-15 mb-5 !bg-sidebar after:!bg-sidebar focus-visible:!ring-0 data-[separator=active]:!bg-sidebar data-[separator=active]:after:!bg-sidebar [&>div]:hidden before:absolute before:inset-0 before:-top-15 before:-bottom-5 before:bg-sidebar before:-z-10"
+          className="relative ml-2 mt-15 mb-5 !bg-sidebar after:!bg-sidebar focus-visible:!ring-0 data-[separator=active]:!bg-sidebar data-[separator=active]:after:!bg-sidebar [&>div]:hidden before:absolute before:inset-0 before:-top-15 before:-bottom-5 before:-left-2 before:bg-sidebar before:-z-10"
         />
         <ResizablePanel minSize="20%" className="bg-sidebar pr-0 pb-2">
           <div className="relative flex w-full flex-1 flex-col h-full">
