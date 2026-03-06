@@ -570,7 +570,7 @@ function Tree({ item }: { item: TreeItem }) {
           </SidebarMenuButton>
         </CollapsibleTrigger>
         <CollapsibleContent>
-          <SidebarMenuSub>
+          <SidebarMenuSub className="mr-0 pr-0">
             {items.map((subItem, index) => (
               <Tree key={index} item={subItem} />
             ))}
