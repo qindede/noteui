@@ -115,7 +115,7 @@ export default function SidebarInsetExample() {
           collapsedSize={0}
         >
           <Sidebar collapsible="none" className="h-full w-full">
-            <SidebarHeader>
+            <SidebarHeader className="pr-0">
               <div className="flex items-center justify-between rounded-sm p-2 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
                 <span className="text-sm">F:\个人资料\笔记</span>
                 <span className="flex items-center">
@@ -131,7 +131,7 @@ export default function SidebarInsetExample() {
               </div>
             </SidebarHeader>
             <SidebarContent>
-              <SidebarGroup>
+              <SidebarGroup className="pr-0">
                 <div className="flex items-center justify-between py-0.5 pr-0.5 pl-2">
                   <span className="text-xs">笔记</span>
                   <span className="flex items-center">
@@ -170,7 +170,7 @@ export default function SidebarInsetExample() {
                 </SidebarGroupContent>
               </SidebarGroup>
             </SidebarContent>
-            <SidebarFooter>
+            <SidebarFooter className="pr-0">
               <div className="flex gap-2 text-sm text-muted-foreground">
                 <IconPlaceholder
                   lucide="DatabaseZap"
